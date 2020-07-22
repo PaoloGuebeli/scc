@@ -17,7 +17,7 @@ ini_set("display_errors", 1);
 /**
  * Configurazione di : URL del progetto
  */
-define('URL', 'http://192.168.1.22/scc/admin/');
+define('URL', 'http://127.0.0.1/scc/admin/');
 
 define("DB_HOST", "localhost");
 define("DB_USER", "root");

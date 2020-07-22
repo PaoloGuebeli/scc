@@ -3409,7 +3409,7 @@ abstract class ".$this->getUnqualifiedClassName().$parentClass." implements Acti
     /**
      * Adds the getPrimaryKey() method for objects that have no primary key.
      * This "feature" is deprecated, since the getPrimaryKey() method is not required
-     * by the Persistent interface (or used by the templates).  Hence, this method is also
+     * by the Persistent interface (or used by the template).  Hence, this method is also
      * deprecated.
      * @param string &$script The script will be modified in this method.
      * @deprecated
@@ -3502,7 +3502,7 @@ abstract class ".$this->getUnqualifiedClassName().$parentClass." implements Acti
     /**
      * Adds the setPrimaryKey() method for objects that have no primary key.
      * This "feature" is deprecated, since the setPrimaryKey() method is not required
-     * by the Persistent interface (or used by the templates).  Hence, this method is also
+     * by the Persistent interface (or used by the template).  Hence, this method is also
      * deprecated.
      * @param string &$script The script will be modified in this method.
      * @deprecated

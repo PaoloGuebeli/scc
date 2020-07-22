@@ -5,9 +5,8 @@
 	require_once 'vendor/autoload.php';
 	require_once 'db/generated-conf/config.php';
 	require_once 'model/DbManager.php';
-	require_once 'controller/Home.php';
 
-if(isset($_COOKIE['authIDD'])) {
+//if(isset($_COOKIE['authIDD'])) {
 	class Users
 	{
 
@@ -36,24 +35,14 @@ if(isset($_COOKIE['authIDD'])) {
 			$this->dbh = DbManager::getDb();
 			$this->config = new PHPAuth\Config($this->dbh, null, null, "it_IT");
 			$this->auth = new PHPAuth\Auth($this->dbh, $this->config);
-			$this->uq = new \scc\scc\PhpauthUsersQuery();
-			$home = new Home();
-			$utente = $home->getUtente();
-
-			if($utente['Ruolo'] != 1){
-				$home->index();
-			}
+			//$this->uq = new \scc\scc\PhpauthUsersQuery();
 		}
 
 		function index()
 		{
-
-			$page = 3;
-			$home = new Home();
-			$utente = $home->getUtente();
-
-			require('views/_template/_header.php');
-			require('views/manage.php');
+		    $page = "users";
+			require('view/template/header.php');
+			require('view/users.php');
 
 		}
 
@@ -173,33 +162,12 @@ if(isset($_COOKIE['authIDD'])) {
 				echo json_encode([false, 'I dati passati non sono validi!']);
 			}
 		}
-
-
-		function uploadImage($id)
-		{
-			$uploaddir = 'views/img/product/';
-			$uploadfile = $uploaddir . basename($_FILES['immagine']['name']);
-
-			if (move_uploaded_file($_FILES['immagine']['tmp_name'], $uploadfile)) {
-
-				$apparecchio = $this->aq->findOneById($id);
-				$apparecchio->setImmagine($_FILES['immagine']['name']);
-				$apparecchio->save();
-
-			}
-			$this->index();
-		}
-
-		function getImmagini()
-		{
-			$dir = 'views/img/product/';
-			echo json_encode(scandir($dir));
-		}
-
 	}
-}else{
+/**
+ * }else{
 	require_once ('controllers/Login.php');
 
 	$login = new Login();
 	$login->index();
 }
+ */

@@ -995,7 +995,7 @@ abstract class AbstractOMBuilder extends DataModelBuilder
      * @param  string $templateDir
      * @return string
      */
-    public function renderTemplate($filename, $vars = [], $templateDir = '/templates/')
+    public function renderTemplate($filename, $vars = [], $templateDir = '/template/')
     {
         $filePath = __DIR__ . $templateDir . $filename;
         if (!file_exists($filePath)) {

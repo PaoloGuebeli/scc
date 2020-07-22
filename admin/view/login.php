@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Ogani</title>
-    <script src="<?php echo URL ?>libs/jquery.min.js" type="text/javascript"></script>
+    <script src="<?php echo URL ?>view/js/jquery.min.js" type="text/javascript"></script>
     <style>
         @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
@@ -39,7 +39,7 @@
         .form .button {
             text-transform: uppercase;
             outline: 0;
-            background: #d24f56;
+            background: #3499ff;
             width: 100%;
             border: 0;
             padding: 15px;
@@ -51,17 +51,17 @@
         }
 
         .form .button:hover, .form .button:active, .form .button:focus {
-            background: #a21f36;
+            background: #2388dd;
         }
 
         .form .message {
             margin: 15px 0 0;
-            color: #a21f36;
+            color: #2388dd;
             font-size: 16px;
         }
 
         .form .message a {
-            color: #900f26;
+            color: #1266aa;
             text-decoration: none;
         }
 
@@ -106,11 +106,11 @@
         }
 
         .container .info span .fa {
-            color: #900f26;
+            color: #1266aa;
         }
 
         body {
-            background: #a21f36;
+            background: #2388dd;
             font-family: "Cairo", sans-serif;
         }
     </style>
@@ -118,8 +118,9 @@
 <body>
 <div class="login-page">
     <div class="form">
+        <img src="<?php echo URL ?>resources/img/scc_logo.png" width="150px" height="150px">
         <form class="login-form" action="<?php echo URL ?>Login/authenticate" method="post">
-            <input type="text" placeholder="email" name="Email" id="email"/>
+            <input type="text" placeholder="Email" name="email" id="email"/>
             <input type="password" placeholder="Password" name="pass"/>
             <input type="submit" class="button" value="ACCEDI">
             <p class="message"><a href="#" onclick="resetPassword()">Dimenticato la password?</a></p>

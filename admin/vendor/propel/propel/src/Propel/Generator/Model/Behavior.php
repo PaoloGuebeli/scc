@@ -66,7 +66,7 @@ class Behavior extends MappingModel
 
     /**
      * The absolute path to the directory
-     * that contains the behavior's templates
+     * that contains the behavior's template
      * files.
      *
      * @var string
@@ -328,7 +328,7 @@ class Behavior extends MappingModel
      * @param  string $templateDir
      * @return string
      */
-    public function renderTemplate($filename, $vars = [], $templateDir = '/templates/')
+    public function renderTemplate($filename, $vars = [], $templateDir = '/template/')
     {
         $filePath = $this->getDirname() . $templateDir . $filename;
         if (!file_exists($filePath)) {

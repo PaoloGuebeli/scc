@@ -2,6 +2,7 @@
 
 require_once 'vendor/autoload.php';
 require_once 'model/DbManager.php';
+require_once 'db/generated-conf/config.php';
 
 class Login
 {
@@ -9,6 +10,7 @@ class Login
 	private $dbh;
 	private $config;
 	private $auth;
+	private $uq;
 
 	/**
 	 * Costruttore Login.
@@ -24,6 +26,7 @@ class Login
 		$this->dbh = DbManager::getDb();
 		$this->config = new PHPAuth\Config($this->dbh, null, null, "it_IT");
 		$this->auth = new PHPAuth\Auth($this->dbh, $this->config);
+		//$this->uq = new \scc\scc\PhpauthUsersQuery();
 	}
 
 	/**
@@ -32,6 +35,15 @@ class Login
 	function index(){
 		require('view/login.php');
 	}
+
+    /**
+     * Questa funzione permette di prendere le informazioni delll'utente loggato.
+     * @return array|string
+     */
+    function getCurrentUser(){
+        $id = $this->auth->getCurrentUID();
+        return $this->uq->findOneById($id)->toArray();
+    }
 
 	/**
 	 * Autenticazione del utente con i parametri email e password.
@@ -75,4 +87,8 @@ class Login
 		}
 	}
 
+	function logout(){
+	    $this->auth->logout($_COOKIE['authIDD']);
+	    $this->index();
+    }
 }

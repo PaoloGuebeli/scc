@@ -46,7 +46,7 @@ class Column extends MappingModel
 
     /**
      * The name to use for the tableMap constant that identifies this column.
-     * (Will be converted to all-uppercase in the templates.)
+     * (Will be converted to all-uppercase in the template.)
      * @var string
      */
     private $tableMapName;

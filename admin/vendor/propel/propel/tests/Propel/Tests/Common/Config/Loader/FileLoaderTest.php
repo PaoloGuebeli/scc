@@ -128,7 +128,7 @@ class FileLoaderTest extends TestCase
                 'project' => '%HoMe%/projects/%project%',
                 'conf' => '%project%',
                 'schema' => '%project%/schema',
-                'template' => '%HoMe%/templates',
+                'template' => '%HoMe%/template',
                 'output%project%' => '/build'
             ],
             '%HoMe%' => 4,
@@ -146,7 +146,7 @@ class FileLoaderTest extends TestCase
                 'project' => 'myHome/projects/myProject',
                 'conf' => 'myProject',
                 'schema' => 'myProject/schema',
-                'template' => 'myHome/templates',
+                'template' => 'myHome/template',
                 'outputmyProject' => '/build'
             ],
             'myHome' => 4,
@@ -228,7 +228,7 @@ class FileLoaderTest extends TestCase
             'direcories' => [
                 'projects' => '%home%/projects',
                 'schema' => '%env.schema%',
-                'template' => '%home%/templates',
+                'template' => '%home%/template',
                 'output%env.home%' => '/build'
             ]
         ];
@@ -240,7 +240,7 @@ class FileLoaderTest extends TestCase
             'direcories' => [
                 'projects' => 'myHome/projects',
                 'schema' => 'mySchema',
-                'template' => 'myHome/templates',
+                'template' => 'myHome/template',
                 'outputmyHome' => '/build'
             ]
         ];

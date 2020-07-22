@@ -25,7 +25,7 @@ abstract class AbstractObjectBuilder extends AbstractOMBuilder
 {
     /**
      * Adds the getter methods for the column values.
-     * This is here because it is probably generic enough to apply to templates being generated
+     * This is here because it is probably generic enough to apply to template being generated
      * in different PHP versions.
      * @param string &$script The script will be modified in this method.
      */
@@ -72,7 +72,7 @@ abstract class AbstractObjectBuilder extends AbstractOMBuilder
 
     /**
      * Adds the mutator (setter) methods for setting column values.
-     * This is here because it is probably generic enough to apply to templates being generated
+     * This is here because it is probably generic enough to apply to template being generated
      * in different PHP versions.
      * @param string &$script The script will be modified in this method.
      */
