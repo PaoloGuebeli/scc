@@ -1,0 +1,14 @@
+{
+    "require": {
+        "propel/propel": "dev-stable-2.0.0",
+        "ext-json": "*",
+        "ext-pdo": "*"
+    },
+    "autoload": {
+        "classmap": [
+            "db/scc/scc/rest/",
+            "db/scc/scc/rest/Base/",
+            "db/scc/scc/rest/Map/"
+        ]
+    }
+}

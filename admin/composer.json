@@ -1,0 +1,16 @@
+{
+    "require": {
+        "phpauth/phpauth": "dev-master",
+        "propel/propel": "dev-master",
+        "ext-json": "*",
+        "ext-pdo": "*",
+        "fpdf/fpdf": "1.82.1"
+    },
+    "autoload": {
+        "classmap": [
+            "db/scc/",
+            "db/scc/Base/",
+            "db/scc/Map/"
+        ]
+    }
+}
