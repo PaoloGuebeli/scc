@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo URL ?>view/style/menu.css">
     <link href="<?php echo URL ?>view/style/fontawesome/css/all.css" rel="stylesheet">
     <script src="<?php echo URL ?>view/js/jquery.min.js" type="text/javascript"></script>
+    <script src="<?php echo URL ?>view/js/main.js" type="text/javascript"></script>
 </head>
 <body>
 <nav class="main-menu">
@@ -26,8 +27,8 @@
             </a>
 
         </li>
-        <li id="events" class="has-subnav">
-            <a href="#">
+        <li id="events" class="has-subnav <?php if($page == "events"){ echo "active";} ?>">
+            <a href="<?php echo URL ?>Events">
                 <i class="fa fa-list fa-2x"></i>
                 <span class="nav-text">
                     Eventi
