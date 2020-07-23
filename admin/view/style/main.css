@@ -18,6 +18,10 @@ body, html{
     margin-left: 60px;
 }
 
+.subtitle{
+    cursor: pointer;
+}
+
 .subtitle i{
     padding-top: 12px;
     font-size: 20px;
@@ -37,12 +41,13 @@ body, html{
     color: #fff;
     border-collapse: collapse;
     max-height: 50vh;
+    margin: 0;
+    width: 100%;
 }
 
 .list th{
     padding-bottom: 10px;
     font-weight: bold;
-    width: 20vw;
 }
 
 .list td{
@@ -64,4 +69,35 @@ body, html{
 .delete-container{
     padding: 20px;
     background-color: #66ccff;
+}
+
+input, select, textarea{
+    margin: 2px;
+    outline: none;
+    width: 20%;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 6px;
+}
+
+input .error{
+    border: 1px solid crimson;
+}
+
+button{
+    border: 2px solid #5fa2db;
+    outline: none;
+    background-color: #fff;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+button:hover{
+    background-color: #ddeeff;
+}
+
+button:active{
+    border: 2px solid #fff;
+    background-color: #fff;
 }
