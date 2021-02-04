@@ -71,14 +71,50 @@ abstract class PhpauthUsers implements ActiveRecordInterface
     /**
      * The value for the email field.
      *
-     * @var        string
+     * @var        string|null
      */
     protected $email;
 
     /**
-     * The value for the password field.
+     * The value for the nome field.
      *
      * @var        string
+     */
+    protected $nome;
+
+    /**
+     * The value for the cognome field.
+     *
+     * @var        string
+     */
+    protected $cognome;
+
+    /**
+     * The value for the phone field.
+     *
+     * @var        string
+     */
+    protected $phone;
+
+    /**
+     * The value for the level field.
+     *
+     * Note: this column has a database default value of: 3
+     * @var        int
+     */
+    protected $level;
+
+    /**
+     * The value for the bithyear field.
+     *
+     * @var        int
+     */
+    protected $bithyear;
+
+    /**
+     * The value for the password field.
+     *
+     * @var        string|null
      */
     protected $password;
 
@@ -114,6 +150,7 @@ abstract class PhpauthUsers implements ActiveRecordInterface
      */
     public function applyDefaultValues()
     {
+        $this->level = 3;
         $this->isactive = false;
     }
 
@@ -283,7 +320,7 @@ abstract class PhpauthUsers implements ActiveRecordInterface
      * @param string $name  The virtual column name
      * @param mixed  $value The value to give to the virtual column
      *
-     * @return $this|PhpauthUsers The current object, for fluid interface
+     * @return $this The current object, for fluid interface
      */
     public function setVirtualColumn($name, $value)
     {
@@ -297,11 +334,11 @@ abstract class PhpauthUsers implements ActiveRecordInterface
      *
      * @param  string  $msg
      * @param  int     $priority One of the Propel::LOG_* logging levels
-     * @return boolean
+     * @return void
      */
     protected function log($msg, $priority = Propel::LOG_INFO)
     {
-        return Propel::log(get_class($this) . ': ' . $msg, $priority);
+        Propel::log(get_class($this) . ': ' . $msg, $priority);
     }
 
     /**
@@ -357,7 +394,7 @@ abstract class PhpauthUsers implements ActiveRecordInterface
     /**
      * Get the [email] column value.
      *
-     * @return string
+     * @return string|null
      */
     public function getEmail()
     {
@@ -365,9 +402,59 @@ abstract class PhpauthUsers implements ActiveRecordInterface
     }
 
     /**
-     * Get the [password] column value.
+     * Get the [nome] column value.
      *
      * @return string
+     */
+    public function getNome()
+    {
+        return $this->nome;
+    }
+
+    /**
+     * Get the [cognome] column value.
+     *
+     * @return string
+     */
+    public function getCognome()
+    {
+        return $this->cognome;
+    }
+
+    /**
+     * Get the [phone] column value.
+     *
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * Get the [level] column value.
+     *
+     * @return int
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
+
+    /**
+     * Get the [bithyear] column value.
+     *
+     * @return int
+     */
+    public function getBithyear()
+    {
+        return $this->bithyear;
+    }
+
+    /**
+     * Get the [password] column value.
+     *
+     * @return string|null
      */
     public function getPassword()
     {
@@ -398,14 +485,14 @@ abstract class PhpauthUsers implements ActiveRecordInterface
      * Get the [optionally formatted] temporal [dt] column value.
      *
      *
-     * @param      string|null $format The date/time format string (either date()-style or strftime()-style).
-     *                            If format is NULL, then the raw DateTime object will be returned.
+     * @param string|null $format The date/time format string (either date()-style or strftime()-style).
+     *   If format is NULL, then the raw DateTime object will be returned.
      *
      * @return string|DateTime Formatted date/time value as string or DateTime object (if format is NULL), NULL if column is NULL, and 0 if column value is 0000-00-00 00:00:00
      *
      * @throws PropelException - if unable to parse/validate the date/time value.
      */
-    public function getDt($format = NULL)
+    public function getDt($format = null)
     {
         if ($format === null) {
             return $this->dt;
@@ -417,7 +504,7 @@ abstract class PhpauthUsers implements ActiveRecordInterface
     /**
      * Set the value of [id] column.
      *
-     * @param int $v new value
+     * @param int $v New value
      * @return $this|\scc\scc\PhpauthUsers The current object (for fluent API support)
      */
     public function setId($v)
@@ -437,7 +524,7 @@ abstract class PhpauthUsers implements ActiveRecordInterface
     /**
      * Set the value of [email] column.
      *
-     * @param string $v new value
+     * @param string|null $v New value
      * @return $this|\scc\scc\PhpauthUsers The current object (for fluent API support)
      */
     public function setEmail($v)
@@ -455,9 +542,109 @@ abstract class PhpauthUsers implements ActiveRecordInterface
     } // setEmail()
 
     /**
+     * Set the value of [nome] column.
+     *
+     * @param string $v New value
+     * @return $this|\scc\scc\PhpauthUsers The current object (for fluent API support)
+     */
+    public function setNome($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->nome !== $v) {
+            $this->nome = $v;
+            $this->modifiedColumns[PhpauthUsersTableMap::COL_NOME] = true;
+        }
+
+        return $this;
+    } // setNome()
+
+    /**
+     * Set the value of [cognome] column.
+     *
+     * @param string $v New value
+     * @return $this|\scc\scc\PhpauthUsers The current object (for fluent API support)
+     */
+    public function setCognome($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->cognome !== $v) {
+            $this->cognome = $v;
+            $this->modifiedColumns[PhpauthUsersTableMap::COL_COGNOME] = true;
+        }
+
+        return $this;
+    } // setCognome()
+
+    /**
+     * Set the value of [phone] column.
+     *
+     * @param string $v New value
+     * @return $this|\scc\scc\PhpauthUsers The current object (for fluent API support)
+     */
+    public function setPhone($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->phone !== $v) {
+            $this->phone = $v;
+            $this->modifiedColumns[PhpauthUsersTableMap::COL_PHONE] = true;
+        }
+
+        return $this;
+    } // setPhone()
+
+    /**
+     * Set the value of [level] column.
+     *
+     * @param int $v New value
+     * @return $this|\scc\scc\PhpauthUsers The current object (for fluent API support)
+     */
+    public function setLevel($v)
+    {
+        if ($v !== null) {
+            $v = (int) $v;
+        }
+
+        if ($this->level !== $v) {
+            $this->level = $v;
+            $this->modifiedColumns[PhpauthUsersTableMap::COL_LEVEL] = true;
+        }
+
+        return $this;
+    } // setLevel()
+
+    /**
+     * Set the value of [bithyear] column.
+     *
+     * @param int $v New value
+     * @return $this|\scc\scc\PhpauthUsers The current object (for fluent API support)
+     */
+    public function setBithyear($v)
+    {
+        if ($v !== null) {
+            $v = (int) $v;
+        }
+
+        if ($this->bithyear !== $v) {
+            $this->bithyear = $v;
+            $this->modifiedColumns[PhpauthUsersTableMap::COL_BITHYEAR] = true;
+        }
+
+        return $this;
+    } // setBithyear()
+
+    /**
      * Set the value of [password] column.
      *
-     * @param string $v new value
+     * @param string|null $v New value
      * @return $this|\scc\scc\PhpauthUsers The current object (for fluent API support)
      */
     public function setPassword($v)
@@ -505,7 +692,7 @@ abstract class PhpauthUsers implements ActiveRecordInterface
     /**
      * Sets the value of [dt] column to a normalized version of the date/time value specified.
      *
-     * @param  mixed $v string, integer (timestamp), or \DateTimeInterface value.
+     * @param  string|integer|\DateTimeInterface $v string, integer (timestamp), or \DateTimeInterface value.
      *               Empty strings are treated as NULL.
      * @return $this|\scc\scc\PhpauthUsers The current object (for fluent API support)
      */
@@ -532,6 +719,10 @@ abstract class PhpauthUsers implements ActiveRecordInterface
      */
     public function hasOnlyDefaultValues()
     {
+            if ($this->level !== 3) {
+                return false;
+            }
+
             if ($this->isactive !== false) {
                 return false;
             }
@@ -568,13 +759,28 @@ abstract class PhpauthUsers implements ActiveRecordInterface
             $col = $row[TableMap::TYPE_NUM == $indexType ? 1 + $startcol : PhpauthUsersTableMap::translateFieldName('Email', TableMap::TYPE_PHPNAME, $indexType)];
             $this->email = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : PhpauthUsersTableMap::translateFieldName('Password', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : PhpauthUsersTableMap::translateFieldName('Nome', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->nome = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 3 + $startcol : PhpauthUsersTableMap::translateFieldName('Cognome', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->cognome = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 4 + $startcol : PhpauthUsersTableMap::translateFieldName('Phone', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->phone = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 5 + $startcol : PhpauthUsersTableMap::translateFieldName('Level', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->level = (null !== $col) ? (int) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 6 + $startcol : PhpauthUsersTableMap::translateFieldName('Bithyear', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->bithyear = (null !== $col) ? (int) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 7 + $startcol : PhpauthUsersTableMap::translateFieldName('Password', TableMap::TYPE_PHPNAME, $indexType)];
             $this->password = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 3 + $startcol : PhpauthUsersTableMap::translateFieldName('Isactive', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 8 + $startcol : PhpauthUsersTableMap::translateFieldName('Isactive', TableMap::TYPE_PHPNAME, $indexType)];
             $this->isactive = (null !== $col) ? (boolean) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 4 + $startcol : PhpauthUsersTableMap::translateFieldName('Dt', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 9 + $startcol : PhpauthUsersTableMap::translateFieldName('Dt', TableMap::TYPE_PHPNAME, $indexType)];
             if ($col === '0000-00-00 00:00:00') {
                 $col = null;
             }
@@ -587,7 +793,7 @@ abstract class PhpauthUsers implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 5; // 5 = PhpauthUsersTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 10; // 10 = PhpauthUsersTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
             throw new PropelException(sprintf('Error populating %s object', '\\scc\\scc\\PhpauthUsers'), 0, $e);
@@ -794,6 +1000,21 @@ abstract class PhpauthUsers implements ActiveRecordInterface
         if ($this->isColumnModified(PhpauthUsersTableMap::COL_EMAIL)) {
             $modifiedColumns[':p' . $index++]  = 'email';
         }
+        if ($this->isColumnModified(PhpauthUsersTableMap::COL_NOME)) {
+            $modifiedColumns[':p' . $index++]  = 'Nome';
+        }
+        if ($this->isColumnModified(PhpauthUsersTableMap::COL_COGNOME)) {
+            $modifiedColumns[':p' . $index++]  = 'Cognome';
+        }
+        if ($this->isColumnModified(PhpauthUsersTableMap::COL_PHONE)) {
+            $modifiedColumns[':p' . $index++]  = 'Phone';
+        }
+        if ($this->isColumnModified(PhpauthUsersTableMap::COL_LEVEL)) {
+            $modifiedColumns[':p' . $index++]  = 'Level';
+        }
+        if ($this->isColumnModified(PhpauthUsersTableMap::COL_BITHYEAR)) {
+            $modifiedColumns[':p' . $index++]  = 'Bithyear';
+        }
         if ($this->isColumnModified(PhpauthUsersTableMap::COL_PASSWORD)) {
             $modifiedColumns[':p' . $index++]  = 'password';
         }
@@ -819,6 +1040,21 @@ abstract class PhpauthUsers implements ActiveRecordInterface
                         break;
                     case 'email':
                         $stmt->bindValue($identifier, $this->email, PDO::PARAM_STR);
+                        break;
+                    case 'Nome':
+                        $stmt->bindValue($identifier, $this->nome, PDO::PARAM_STR);
+                        break;
+                    case 'Cognome':
+                        $stmt->bindValue($identifier, $this->cognome, PDO::PARAM_STR);
+                        break;
+                    case 'Phone':
+                        $stmt->bindValue($identifier, $this->phone, PDO::PARAM_STR);
+                        break;
+                    case 'Level':
+                        $stmt->bindValue($identifier, $this->level, PDO::PARAM_INT);
+                        break;
+                    case 'Bithyear':
+                        $stmt->bindValue($identifier, $this->bithyear, PDO::PARAM_INT);
                         break;
                     case 'password':
                         $stmt->bindValue($identifier, $this->password, PDO::PARAM_STR);
@@ -898,12 +1134,27 @@ abstract class PhpauthUsers implements ActiveRecordInterface
                 return $this->getEmail();
                 break;
             case 2:
-                return $this->getPassword();
+                return $this->getNome();
                 break;
             case 3:
-                return $this->getIsactive();
+                return $this->getCognome();
                 break;
             case 4:
+                return $this->getPhone();
+                break;
+            case 5:
+                return $this->getLevel();
+                break;
+            case 6:
+                return $this->getBithyear();
+                break;
+            case 7:
+                return $this->getPassword();
+                break;
+            case 8:
+                return $this->getIsactive();
+                break;
+            case 9:
                 return $this->getDt();
                 break;
             default:
@@ -937,12 +1188,17 @@ abstract class PhpauthUsers implements ActiveRecordInterface
         $result = array(
             $keys[0] => $this->getId(),
             $keys[1] => $this->getEmail(),
-            $keys[2] => $this->getPassword(),
-            $keys[3] => $this->getIsactive(),
-            $keys[4] => $this->getDt(),
+            $keys[2] => $this->getNome(),
+            $keys[3] => $this->getCognome(),
+            $keys[4] => $this->getPhone(),
+            $keys[5] => $this->getLevel(),
+            $keys[6] => $this->getBithyear(),
+            $keys[7] => $this->getPassword(),
+            $keys[8] => $this->getIsactive(),
+            $keys[9] => $this->getDt(),
         );
-        if ($result[$keys[4]] instanceof \DateTimeInterface) {
-            $result[$keys[4]] = $result[$keys[4]]->format('c');
+        if ($result[$keys[9]] instanceof \DateTimeInterface) {
+            $result[$keys[9]] = $result[$keys[9]]->format('Y-m-d H:i:s.u');
         }
 
         $virtualColumns = $this->virtualColumns;
@@ -990,12 +1246,27 @@ abstract class PhpauthUsers implements ActiveRecordInterface
                 $this->setEmail($value);
                 break;
             case 2:
-                $this->setPassword($value);
+                $this->setNome($value);
                 break;
             case 3:
-                $this->setIsactive($value);
+                $this->setCognome($value);
                 break;
             case 4:
+                $this->setPhone($value);
+                break;
+            case 5:
+                $this->setLevel($value);
+                break;
+            case 6:
+                $this->setBithyear($value);
+                break;
+            case 7:
+                $this->setPassword($value);
+                break;
+            case 8:
+                $this->setIsactive($value);
+                break;
+            case 9:
                 $this->setDt($value);
                 break;
         } // switch()
@@ -1031,13 +1302,28 @@ abstract class PhpauthUsers implements ActiveRecordInterface
             $this->setEmail($arr[$keys[1]]);
         }
         if (array_key_exists($keys[2], $arr)) {
-            $this->setPassword($arr[$keys[2]]);
+            $this->setNome($arr[$keys[2]]);
         }
         if (array_key_exists($keys[3], $arr)) {
-            $this->setIsactive($arr[$keys[3]]);
+            $this->setCognome($arr[$keys[3]]);
         }
         if (array_key_exists($keys[4], $arr)) {
-            $this->setDt($arr[$keys[4]]);
+            $this->setPhone($arr[$keys[4]]);
+        }
+        if (array_key_exists($keys[5], $arr)) {
+            $this->setLevel($arr[$keys[5]]);
+        }
+        if (array_key_exists($keys[6], $arr)) {
+            $this->setBithyear($arr[$keys[6]]);
+        }
+        if (array_key_exists($keys[7], $arr)) {
+            $this->setPassword($arr[$keys[7]]);
+        }
+        if (array_key_exists($keys[8], $arr)) {
+            $this->setIsactive($arr[$keys[8]]);
+        }
+        if (array_key_exists($keys[9], $arr)) {
+            $this->setDt($arr[$keys[9]]);
         }
     }
 
@@ -1085,6 +1371,21 @@ abstract class PhpauthUsers implements ActiveRecordInterface
         }
         if ($this->isColumnModified(PhpauthUsersTableMap::COL_EMAIL)) {
             $criteria->add(PhpauthUsersTableMap::COL_EMAIL, $this->email);
+        }
+        if ($this->isColumnModified(PhpauthUsersTableMap::COL_NOME)) {
+            $criteria->add(PhpauthUsersTableMap::COL_NOME, $this->nome);
+        }
+        if ($this->isColumnModified(PhpauthUsersTableMap::COL_COGNOME)) {
+            $criteria->add(PhpauthUsersTableMap::COL_COGNOME, $this->cognome);
+        }
+        if ($this->isColumnModified(PhpauthUsersTableMap::COL_PHONE)) {
+            $criteria->add(PhpauthUsersTableMap::COL_PHONE, $this->phone);
+        }
+        if ($this->isColumnModified(PhpauthUsersTableMap::COL_LEVEL)) {
+            $criteria->add(PhpauthUsersTableMap::COL_LEVEL, $this->level);
+        }
+        if ($this->isColumnModified(PhpauthUsersTableMap::COL_BITHYEAR)) {
+            $criteria->add(PhpauthUsersTableMap::COL_BITHYEAR, $this->bithyear);
         }
         if ($this->isColumnModified(PhpauthUsersTableMap::COL_PASSWORD)) {
             $criteria->add(PhpauthUsersTableMap::COL_PASSWORD, $this->password);
@@ -1182,6 +1483,11 @@ abstract class PhpauthUsers implements ActiveRecordInterface
     public function copyInto($copyObj, $deepCopy = false, $makeNew = true)
     {
         $copyObj->setEmail($this->getEmail());
+        $copyObj->setNome($this->getNome());
+        $copyObj->setCognome($this->getCognome());
+        $copyObj->setPhone($this->getPhone());
+        $copyObj->setLevel($this->getLevel());
+        $copyObj->setBithyear($this->getBithyear());
         $copyObj->setPassword($this->getPassword());
         $copyObj->setIsactive($this->getIsactive());
         $copyObj->setDt($this->getDt());
@@ -1222,6 +1528,11 @@ abstract class PhpauthUsers implements ActiveRecordInterface
     {
         $this->id = null;
         $this->email = null;
+        $this->nome = null;
+        $this->cognome = null;
+        $this->phone = null;
+        $this->level = null;
+        $this->bithyear = null;
         $this->password = null;
         $this->isactive = null;
         $this->dt = null;
@@ -1265,10 +1576,7 @@ abstract class PhpauthUsers implements ActiveRecordInterface
      */
     public function preSave(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::preSave')) {
-            return parent::preSave($con);
-        }
-        return true;
+                return true;
     }
 
     /**
@@ -1277,10 +1585,7 @@ abstract class PhpauthUsers implements ActiveRecordInterface
      */
     public function postSave(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::postSave')) {
-            parent::postSave($con);
-        }
-    }
+            }
 
     /**
      * Code to be run before inserting to database
@@ -1289,10 +1594,7 @@ abstract class PhpauthUsers implements ActiveRecordInterface
      */
     public function preInsert(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::preInsert')) {
-            return parent::preInsert($con);
-        }
-        return true;
+                return true;
     }
 
     /**
@@ -1301,10 +1603,7 @@ abstract class PhpauthUsers implements ActiveRecordInterface
      */
     public function postInsert(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::postInsert')) {
-            parent::postInsert($con);
-        }
-    }
+            }
 
     /**
      * Code to be run before updating the object in database
@@ -1313,10 +1612,7 @@ abstract class PhpauthUsers implements ActiveRecordInterface
      */
     public function preUpdate(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::preUpdate')) {
-            return parent::preUpdate($con);
-        }
-        return true;
+                return true;
     }
 
     /**
@@ -1325,10 +1621,7 @@ abstract class PhpauthUsers implements ActiveRecordInterface
      */
     public function postUpdate(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::postUpdate')) {
-            parent::postUpdate($con);
-        }
-    }
+            }
 
     /**
      * Code to be run before deleting the object in database
@@ -1337,10 +1630,7 @@ abstract class PhpauthUsers implements ActiveRecordInterface
      */
     public function preDelete(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::preDelete')) {
-            return parent::preDelete($con);
-        }
-        return true;
+                return true;
     }
 
     /**
@@ -1349,10 +1639,7 @@ abstract class PhpauthUsers implements ActiveRecordInterface
      */
     public function postDelete(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::postDelete')) {
-            parent::postDelete($con);
-        }
-    }
+            }
 
 
     /**

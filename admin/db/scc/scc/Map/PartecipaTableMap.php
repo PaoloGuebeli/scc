@@ -124,6 +124,47 @@ class PartecipaTableMap extends TableMap
     );
 
     /**
+     * Holds a list of column names and their normalized version.
+     *
+     * @var string[]
+     */
+    protected $normalizedColumnNameMap = [
+
+        'IdUtente' => 'ID_UTENTE',
+        'Partecipa.IdUtente' => 'ID_UTENTE',
+        'idUtente' => 'ID_UTENTE',
+        'partecipa.idUtente' => 'ID_UTENTE',
+        'PartecipaTableMap::COL_ID_UTENTE' => 'ID_UTENTE',
+        'COL_ID_UTENTE' => 'ID_UTENTE',
+        'Id_Utente' => 'ID_UTENTE',
+        'partecipa.Id_Utente' => 'ID_UTENTE',
+        'IdEvento' => 'ID_EVENTO',
+        'Partecipa.IdEvento' => 'ID_EVENTO',
+        'idEvento' => 'ID_EVENTO',
+        'partecipa.idEvento' => 'ID_EVENTO',
+        'PartecipaTableMap::COL_ID_EVENTO' => 'ID_EVENTO',
+        'COL_ID_EVENTO' => 'ID_EVENTO',
+        'Id_Evento' => 'ID_EVENTO',
+        'partecipa.Id_Evento' => 'ID_EVENTO',
+        'Tipo' => 'TIPO',
+        'Partecipa.Tipo' => 'TIPO',
+        'tipo' => 'TIPO',
+        'partecipa.tipo' => 'TIPO',
+        'PartecipaTableMap::COL_TIPO' => 'TIPO',
+        'COL_TIPO' => 'TIPO',
+        'Tipo' => 'TIPO',
+        'partecipa.Tipo' => 'TIPO',
+        'IdGruppo' => 'ID_GRUPPO',
+        'Partecipa.IdGruppo' => 'ID_GRUPPO',
+        'idGruppo' => 'ID_GRUPPO',
+        'partecipa.idGruppo' => 'ID_GRUPPO',
+        'PartecipaTableMap::COL_ID_GRUPPO' => 'ID_GRUPPO',
+        'COL_ID_GRUPPO' => 'ID_GRUPPO',
+        'Id_Gruppo' => 'ID_GRUPPO',
+        'partecipa.Id_Gruppo' => 'ID_GRUPPO',
+    ];
+
+    /**
      * Initialize the table attributes and columns
      * Relations are not initialized by this method since they are lazy loaded
      *
@@ -386,6 +427,32 @@ class PartecipaTableMap extends TableMap
             $criteria->addSelectColumn($alias . '.Id_Evento');
             $criteria->addSelectColumn($alias . '.Tipo');
             $criteria->addSelectColumn($alias . '.Id_Gruppo');
+        }
+    }
+
+    /**
+     * Remove all the columns needed to create a new object.
+     *
+     * Note: any columns that were marked with lazyLoad="true" in the
+     * XML schema will not be removed as they are only loaded on demand.
+     *
+     * @param Criteria $criteria object containing the columns to remove.
+     * @param string   $alias    optional table alias
+     * @throws PropelException Any exceptions caught during processing will be
+     *                         rethrown wrapped into a PropelException.
+     */
+    public static function removeSelectColumns(Criteria $criteria, $alias = null)
+    {
+        if (null === $alias) {
+            $criteria->removeSelectColumn(PartecipaTableMap::COL_ID_UTENTE);
+            $criteria->removeSelectColumn(PartecipaTableMap::COL_ID_EVENTO);
+            $criteria->removeSelectColumn(PartecipaTableMap::COL_TIPO);
+            $criteria->removeSelectColumn(PartecipaTableMap::COL_ID_GRUPPO);
+        } else {
+            $criteria->removeSelectColumn($alias . '.Id_Utente');
+            $criteria->removeSelectColumn($alias . '.Id_Evento');
+            $criteria->removeSelectColumn($alias . '.Tipo');
+            $criteria->removeSelectColumn($alias . '.Id_Gruppo');
         }
     }
 

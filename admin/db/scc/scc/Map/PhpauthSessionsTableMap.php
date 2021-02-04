@@ -139,6 +139,71 @@ class PhpauthSessionsTableMap extends TableMap
     );
 
     /**
+     * Holds a list of column names and their normalized version.
+     *
+     * @var string[]
+     */
+    protected $normalizedColumnNameMap = [
+
+        'Id' => 'ID',
+        'PhpauthSessions.Id' => 'ID',
+        'id' => 'ID',
+        'phpauthSessions.id' => 'ID',
+        'PhpauthSessionsTableMap::COL_ID' => 'ID',
+        'COL_ID' => 'ID',
+        'id' => 'ID',
+        'phpauth_sessions.id' => 'ID',
+        'Uid' => 'UID',
+        'PhpauthSessions.Uid' => 'UID',
+        'uid' => 'UID',
+        'phpauthSessions.uid' => 'UID',
+        'PhpauthSessionsTableMap::COL_UID' => 'UID',
+        'COL_UID' => 'UID',
+        'uid' => 'UID',
+        'phpauth_sessions.uid' => 'UID',
+        'Hash' => 'HASH',
+        'PhpauthSessions.Hash' => 'HASH',
+        'hash' => 'HASH',
+        'phpauthSessions.hash' => 'HASH',
+        'PhpauthSessionsTableMap::COL_HASH' => 'HASH',
+        'COL_HASH' => 'HASH',
+        'hash' => 'HASH',
+        'phpauth_sessions.hash' => 'HASH',
+        'Expiredate' => 'EXPIREDATE',
+        'PhpauthSessions.Expiredate' => 'EXPIREDATE',
+        'expiredate' => 'EXPIREDATE',
+        'phpauthSessions.expiredate' => 'EXPIREDATE',
+        'PhpauthSessionsTableMap::COL_EXPIREDATE' => 'EXPIREDATE',
+        'COL_EXPIREDATE' => 'EXPIREDATE',
+        'expiredate' => 'EXPIREDATE',
+        'phpauth_sessions.expiredate' => 'EXPIREDATE',
+        'Ip' => 'IP',
+        'PhpauthSessions.Ip' => 'IP',
+        'ip' => 'IP',
+        'phpauthSessions.ip' => 'IP',
+        'PhpauthSessionsTableMap::COL_IP' => 'IP',
+        'COL_IP' => 'IP',
+        'ip' => 'IP',
+        'phpauth_sessions.ip' => 'IP',
+        'Agent' => 'AGENT',
+        'PhpauthSessions.Agent' => 'AGENT',
+        'agent' => 'AGENT',
+        'phpauthSessions.agent' => 'AGENT',
+        'PhpauthSessionsTableMap::COL_AGENT' => 'AGENT',
+        'COL_AGENT' => 'AGENT',
+        'agent' => 'AGENT',
+        'phpauth_sessions.agent' => 'AGENT',
+        'CookieCrc' => 'COOKIE_CRC',
+        'PhpauthSessions.CookieCrc' => 'COOKIE_CRC',
+        'cookieCrc' => 'COOKIE_CRC',
+        'phpauthSessions.cookieCrc' => 'COOKIE_CRC',
+        'PhpauthSessionsTableMap::COL_COOKIE_CRC' => 'COOKIE_CRC',
+        'COL_COOKIE_CRC' => 'COOKIE_CRC',
+        'cookie_crc' => 'COOKIE_CRC',
+        'phpauth_sessions.cookie_crc' => 'COOKIE_CRC',
+    ];
+
+    /**
      * Initialize the table attributes and columns
      * Relations are not initialized by this method since they are lazy loaded
      *
@@ -327,6 +392,38 @@ class PhpauthSessionsTableMap extends TableMap
             $criteria->addSelectColumn($alias . '.ip');
             $criteria->addSelectColumn($alias . '.agent');
             $criteria->addSelectColumn($alias . '.cookie_crc');
+        }
+    }
+
+    /**
+     * Remove all the columns needed to create a new object.
+     *
+     * Note: any columns that were marked with lazyLoad="true" in the
+     * XML schema will not be removed as they are only loaded on demand.
+     *
+     * @param Criteria $criteria object containing the columns to remove.
+     * @param string   $alias    optional table alias
+     * @throws PropelException Any exceptions caught during processing will be
+     *                         rethrown wrapped into a PropelException.
+     */
+    public static function removeSelectColumns(Criteria $criteria, $alias = null)
+    {
+        if (null === $alias) {
+            $criteria->removeSelectColumn(PhpauthSessionsTableMap::COL_ID);
+            $criteria->removeSelectColumn(PhpauthSessionsTableMap::COL_UID);
+            $criteria->removeSelectColumn(PhpauthSessionsTableMap::COL_HASH);
+            $criteria->removeSelectColumn(PhpauthSessionsTableMap::COL_EXPIREDATE);
+            $criteria->removeSelectColumn(PhpauthSessionsTableMap::COL_IP);
+            $criteria->removeSelectColumn(PhpauthSessionsTableMap::COL_AGENT);
+            $criteria->removeSelectColumn(PhpauthSessionsTableMap::COL_COOKIE_CRC);
+        } else {
+            $criteria->removeSelectColumn($alias . '.id');
+            $criteria->removeSelectColumn($alias . '.uid');
+            $criteria->removeSelectColumn($alias . '.hash');
+            $criteria->removeSelectColumn($alias . '.expiredate');
+            $criteria->removeSelectColumn($alias . '.ip');
+            $criteria->removeSelectColumn($alias . '.agent');
+            $criteria->removeSelectColumn($alias . '.cookie_crc');
         }
     }
 

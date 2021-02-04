@@ -124,6 +124,47 @@ class EventoTableMap extends TableMap
     );
 
     /**
+     * Holds a list of column names and their normalized version.
+     *
+     * @var string[]
+     */
+    protected $normalizedColumnNameMap = [
+
+        'Id' => 'ID',
+        'Evento.Id' => 'ID',
+        'id' => 'ID',
+        'evento.id' => 'ID',
+        'EventoTableMap::COL_ID' => 'ID',
+        'COL_ID' => 'ID',
+        'id' => 'ID',
+        'evento.id' => 'ID',
+        'Nome' => 'NOME',
+        'Evento.Nome' => 'NOME',
+        'nome' => 'NOME',
+        'evento.nome' => 'NOME',
+        'EventoTableMap::COL_NOME' => 'NOME',
+        'COL_NOME' => 'NOME',
+        'nome' => 'NOME',
+        'evento.nome' => 'NOME',
+        'Descr' => 'DESCR',
+        'Evento.Descr' => 'DESCR',
+        'descr' => 'DESCR',
+        'evento.descr' => 'DESCR',
+        'EventoTableMap::COL_DESCR' => 'DESCR',
+        'COL_DESCR' => 'DESCR',
+        'descr' => 'DESCR',
+        'evento.descr' => 'DESCR',
+        'DataInizio' => 'DATA_INIZIO',
+        'Evento.DataInizio' => 'DATA_INIZIO',
+        'dataInizio' => 'DATA_INIZIO',
+        'evento.dataInizio' => 'DATA_INIZIO',
+        'EventoTableMap::COL_DATA_INIZIO' => 'DATA_INIZIO',
+        'COL_DATA_INIZIO' => 'DATA_INIZIO',
+        'data_inizio' => 'DATA_INIZIO',
+        'evento.data_inizio' => 'DATA_INIZIO',
+    ];
+
+    /**
      * Initialize the table attributes and columns
      * Relations are not initialized by this method since they are lazy loaded
      *
@@ -319,6 +360,32 @@ class EventoTableMap extends TableMap
             $criteria->addSelectColumn($alias . '.nome');
             $criteria->addSelectColumn($alias . '.descr');
             $criteria->addSelectColumn($alias . '.data_inizio');
+        }
+    }
+
+    /**
+     * Remove all the columns needed to create a new object.
+     *
+     * Note: any columns that were marked with lazyLoad="true" in the
+     * XML schema will not be removed as they are only loaded on demand.
+     *
+     * @param Criteria $criteria object containing the columns to remove.
+     * @param string   $alias    optional table alias
+     * @throws PropelException Any exceptions caught during processing will be
+     *                         rethrown wrapped into a PropelException.
+     */
+    public static function removeSelectColumns(Criteria $criteria, $alias = null)
+    {
+        if (null === $alias) {
+            $criteria->removeSelectColumn(EventoTableMap::COL_ID);
+            $criteria->removeSelectColumn(EventoTableMap::COL_NOME);
+            $criteria->removeSelectColumn(EventoTableMap::COL_DESCR);
+            $criteria->removeSelectColumn(EventoTableMap::COL_DATA_INIZIO);
+        } else {
+            $criteria->removeSelectColumn($alias . '.id');
+            $criteria->removeSelectColumn($alias . '.nome');
+            $criteria->removeSelectColumn($alias . '.descr');
+            $criteria->removeSelectColumn($alias . '.data_inizio');
         }
     }
 

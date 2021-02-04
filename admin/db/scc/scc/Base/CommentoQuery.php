@@ -39,14 +39,14 @@ use scc\scc\Map\CommentoTableMap;
  * @method     ChildCommentoQuery rightJoinWith($relation) Adds a RIGHT JOIN clause and with to the query
  * @method     ChildCommentoQuery innerJoinWith($relation) Adds a INNER JOIN clause and with to the query
  *
- * @method     ChildCommento findOne(ConnectionInterface $con = null) Return the first ChildCommento matching the query
+ * @method     ChildCommento|null findOne(ConnectionInterface $con = null) Return the first ChildCommento matching the query
  * @method     ChildCommento findOneOrCreate(ConnectionInterface $con = null) Return the first ChildCommento matching the query, or a new ChildCommento object populated from the query conditions when no match is found
  *
- * @method     ChildCommento findOneById(int $Id) Return the first ChildCommento filtered by the Id column
- * @method     ChildCommento findOneByIdMonitore(int $Id_Monitore) Return the first ChildCommento filtered by the Id_Monitore column
- * @method     ChildCommento findOneByIdPartecipante(int $Id_Partecipante) Return the first ChildCommento filtered by the Id_Partecipante column
- * @method     ChildCommento findOneByDataCreazione(string $Data_Creazione) Return the first ChildCommento filtered by the Data_Creazione column
- * @method     ChildCommento findOneByCommento(string $Commento) Return the first ChildCommento filtered by the Commento column *
+ * @method     ChildCommento|null findOneById(int $Id) Return the first ChildCommento filtered by the Id column
+ * @method     ChildCommento|null findOneByIdMonitore(int $Id_Monitore) Return the first ChildCommento filtered by the Id_Monitore column
+ * @method     ChildCommento|null findOneByIdPartecipante(int $Id_Partecipante) Return the first ChildCommento filtered by the Id_Partecipante column
+ * @method     ChildCommento|null findOneByDataCreazione(string $Data_Creazione) Return the first ChildCommento filtered by the Data_Creazione column
+ * @method     ChildCommento|null findOneByCommento(string $Commento) Return the first ChildCommento filtered by the Commento column *
 
  * @method     ChildCommento requirePk($key, ConnectionInterface $con = null) Return the ChildCommento by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildCommento requireOne(ConnectionInterface $con = null) Return the first ChildCommento matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found

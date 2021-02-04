@@ -129,6 +129,55 @@ class CommentoTableMap extends TableMap
     );
 
     /**
+     * Holds a list of column names and their normalized version.
+     *
+     * @var string[]
+     */
+    protected $normalizedColumnNameMap = [
+
+        'Id' => 'ID',
+        'Commento.Id' => 'ID',
+        'id' => 'ID',
+        'commento.id' => 'ID',
+        'CommentoTableMap::COL_ID' => 'ID',
+        'COL_ID' => 'ID',
+        'Id' => 'ID',
+        'commento.Id' => 'ID',
+        'IdMonitore' => 'ID_MONITORE',
+        'Commento.IdMonitore' => 'ID_MONITORE',
+        'idMonitore' => 'ID_MONITORE',
+        'commento.idMonitore' => 'ID_MONITORE',
+        'CommentoTableMap::COL_ID_MONITORE' => 'ID_MONITORE',
+        'COL_ID_MONITORE' => 'ID_MONITORE',
+        'Id_Monitore' => 'ID_MONITORE',
+        'commento.Id_Monitore' => 'ID_MONITORE',
+        'IdPartecipante' => 'ID_PARTECIPANTE',
+        'Commento.IdPartecipante' => 'ID_PARTECIPANTE',
+        'idPartecipante' => 'ID_PARTECIPANTE',
+        'commento.idPartecipante' => 'ID_PARTECIPANTE',
+        'CommentoTableMap::COL_ID_PARTECIPANTE' => 'ID_PARTECIPANTE',
+        'COL_ID_PARTECIPANTE' => 'ID_PARTECIPANTE',
+        'Id_Partecipante' => 'ID_PARTECIPANTE',
+        'commento.Id_Partecipante' => 'ID_PARTECIPANTE',
+        'DataCreazione' => 'DATA_CREAZIONE',
+        'Commento.DataCreazione' => 'DATA_CREAZIONE',
+        'dataCreazione' => 'DATA_CREAZIONE',
+        'commento.dataCreazione' => 'DATA_CREAZIONE',
+        'CommentoTableMap::COL_DATA_CREAZIONE' => 'DATA_CREAZIONE',
+        'COL_DATA_CREAZIONE' => 'DATA_CREAZIONE',
+        'Data_Creazione' => 'DATA_CREAZIONE',
+        'commento.Data_Creazione' => 'DATA_CREAZIONE',
+        'Commento' => 'COMMENTO',
+        'Commento.Commento' => 'COMMENTO',
+        'commento' => 'COMMENTO',
+        'commento.commento' => 'COMMENTO',
+        'CommentoTableMap::COL_COMMENTO' => 'COMMENTO',
+        'COL_COMMENTO' => 'COMMENTO',
+        'Commento' => 'COMMENTO',
+        'commento.Commento' => 'COMMENTO',
+    ];
+
+    /**
      * Initialize the table attributes and columns
      * Relations are not initialized by this method since they are lazy loaded
      *
@@ -311,6 +360,34 @@ class CommentoTableMap extends TableMap
             $criteria->addSelectColumn($alias . '.Id_Partecipante');
             $criteria->addSelectColumn($alias . '.Data_Creazione');
             $criteria->addSelectColumn($alias . '.Commento');
+        }
+    }
+
+    /**
+     * Remove all the columns needed to create a new object.
+     *
+     * Note: any columns that were marked with lazyLoad="true" in the
+     * XML schema will not be removed as they are only loaded on demand.
+     *
+     * @param Criteria $criteria object containing the columns to remove.
+     * @param string   $alias    optional table alias
+     * @throws PropelException Any exceptions caught during processing will be
+     *                         rethrown wrapped into a PropelException.
+     */
+    public static function removeSelectColumns(Criteria $criteria, $alias = null)
+    {
+        if (null === $alias) {
+            $criteria->removeSelectColumn(CommentoTableMap::COL_ID);
+            $criteria->removeSelectColumn(CommentoTableMap::COL_ID_MONITORE);
+            $criteria->removeSelectColumn(CommentoTableMap::COL_ID_PARTECIPANTE);
+            $criteria->removeSelectColumn(CommentoTableMap::COL_DATA_CREAZIONE);
+            $criteria->removeSelectColumn(CommentoTableMap::COL_COMMENTO);
+        } else {
+            $criteria->removeSelectColumn($alias . '.Id');
+            $criteria->removeSelectColumn($alias . '.Id_Monitore');
+            $criteria->removeSelectColumn($alias . '.Id_Partecipante');
+            $criteria->removeSelectColumn($alias . '.Data_Creazione');
+            $criteria->removeSelectColumn($alias . '.Commento');
         }
     }
 

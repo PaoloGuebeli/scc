@@ -119,6 +119,39 @@ class GruppoTableMap extends TableMap
     );
 
     /**
+     * Holds a list of column names and their normalized version.
+     *
+     * @var string[]
+     */
+    protected $normalizedColumnNameMap = [
+
+        'Id' => 'ID',
+        'Gruppo.Id' => 'ID',
+        'id' => 'ID',
+        'gruppo.id' => 'ID',
+        'GruppoTableMap::COL_ID' => 'ID',
+        'COL_ID' => 'ID',
+        'Id' => 'ID',
+        'gruppo.Id' => 'ID',
+        'Categoria' => 'CATEGORIA',
+        'Gruppo.Categoria' => 'CATEGORIA',
+        'categoria' => 'CATEGORIA',
+        'gruppo.categoria' => 'CATEGORIA',
+        'GruppoTableMap::COL_CATEGORIA' => 'CATEGORIA',
+        'COL_CATEGORIA' => 'CATEGORIA',
+        'Categoria' => 'CATEGORIA',
+        'gruppo.Categoria' => 'CATEGORIA',
+        'Livello' => 'LIVELLO',
+        'Gruppo.Livello' => 'LIVELLO',
+        'livello' => 'LIVELLO',
+        'gruppo.livello' => 'LIVELLO',
+        'GruppoTableMap::COL_LIVELLO' => 'LIVELLO',
+        'COL_LIVELLO' => 'LIVELLO',
+        'Livello' => 'LIVELLO',
+        'gruppo.Livello' => 'LIVELLO',
+    ];
+
+    /**
      * Initialize the table attributes and columns
      * Relations are not initialized by this method since they are lazy loaded
      *
@@ -311,6 +344,30 @@ class GruppoTableMap extends TableMap
             $criteria->addSelectColumn($alias . '.Id');
             $criteria->addSelectColumn($alias . '.Categoria');
             $criteria->addSelectColumn($alias . '.Livello');
+        }
+    }
+
+    /**
+     * Remove all the columns needed to create a new object.
+     *
+     * Note: any columns that were marked with lazyLoad="true" in the
+     * XML schema will not be removed as they are only loaded on demand.
+     *
+     * @param Criteria $criteria object containing the columns to remove.
+     * @param string   $alias    optional table alias
+     * @throws PropelException Any exceptions caught during processing will be
+     *                         rethrown wrapped into a PropelException.
+     */
+    public static function removeSelectColumns(Criteria $criteria, $alias = null)
+    {
+        if (null === $alias) {
+            $criteria->removeSelectColumn(GruppoTableMap::COL_ID);
+            $criteria->removeSelectColumn(GruppoTableMap::COL_CATEGORIA);
+            $criteria->removeSelectColumn(GruppoTableMap::COL_LIVELLO);
+        } else {
+            $criteria->removeSelectColumn($alias . '.Id');
+            $criteria->removeSelectColumn($alias . '.Categoria');
+            $criteria->removeSelectColumn($alias . '.Livello');
         }
     }
 

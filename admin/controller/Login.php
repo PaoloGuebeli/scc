@@ -21,12 +21,12 @@ class Login
 	{
 
 		/**
-		 * Istanza del databse per permettere a phpAuth di connettersi.
+		 * Istanza del database per permettere a phpAuth di connettersi.
 		 */
 		$this->dbh = DbManager::getDb();
-		$this->config = new PHPAuth\Config($this->dbh, null, null, "it_IT");
+		$this->config = new PHPAuth\Config($this->dbh, '', '', "it_IT");
 		$this->auth = new PHPAuth\Auth($this->dbh, $this->config);
-		//$this->uq = new \scc\scc\PhpauthUsersQuery();
+		$this->uq = new \scc\scc\PhpauthUsersQuery();
 	}
 
 	/**
@@ -52,19 +52,24 @@ class Login
 		if(isset($_POST['email']) && isset($_POST['pass'])) {
 			$email = $_POST['email'];
 			$pass = $_POST['pass'];
-			$return = $this->auth->login($email, $pass);
-			if (!$return['error']) {
+			$user = $this->uq->findByEmail($_POST['email']);
+			if(isset($user['password'])) {
+                $return = $this->auth->login($email, $pass);
+                if (!$return['error']) {
 
-				setcookie('authIDD', $return["hash"], $return["expire"], '/');
-				$userhash = $return['hash'];
+                    setcookie('authIDD', $return["hash"], $return["expire"], '/');
+                    $userhash = $return['hash'];
 
-				$home = new Home();
+                    $home = new Home();
 
-				$home->index();
+                    $home->index();
 
-			} else {
-				require('view/login.php');
-			}
+                } else {
+                    require('view/login.php');
+                }
+            }else{
+			    $this->resetPassword();
+            }
 		}
 	}
 
@@ -75,7 +80,8 @@ class Login
 			$return = $this->auth->requestReset($_POST['email']);
 
 			if (!$return['error']) {
-				echo json_encode([true]);
+				echo json_encode([true], $return['token']);
+				$this->index();
 			} else {
 				echo json_encode([false, $return['message']]);
 			}

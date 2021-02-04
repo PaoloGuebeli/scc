@@ -48,12 +48,12 @@ use scc\scc\Map\GruppoTableMap;
  *
  * @method     \scc\scc\PartecipaQuery endUse() Finalizes a secondary criteria and merges it with its primary Criteria
  *
- * @method     ChildGruppo findOne(ConnectionInterface $con = null) Return the first ChildGruppo matching the query
+ * @method     ChildGruppo|null findOne(ConnectionInterface $con = null) Return the first ChildGruppo matching the query
  * @method     ChildGruppo findOneOrCreate(ConnectionInterface $con = null) Return the first ChildGruppo matching the query, or a new ChildGruppo object populated from the query conditions when no match is found
  *
- * @method     ChildGruppo findOneById(int $Id) Return the first ChildGruppo filtered by the Id column
- * @method     ChildGruppo findOneByCategoria(string $Categoria) Return the first ChildGruppo filtered by the Categoria column
- * @method     ChildGruppo findOneByLivello(string $Livello) Return the first ChildGruppo filtered by the Livello column *
+ * @method     ChildGruppo|null findOneById(int $Id) Return the first ChildGruppo filtered by the Id column
+ * @method     ChildGruppo|null findOneByCategoria(string $Categoria) Return the first ChildGruppo filtered by the Categoria column
+ * @method     ChildGruppo|null findOneByLivello(string $Livello) Return the first ChildGruppo filtered by the Livello column *
 
  * @method     ChildGruppo requirePk($key, ConnectionInterface $con = null) Return the ChildGruppo by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildGruppo requireOne(ConnectionInterface $con = null) Return the first ChildGruppo matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found

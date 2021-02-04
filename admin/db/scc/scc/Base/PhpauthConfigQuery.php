@@ -33,11 +33,11 @@ use scc\scc\Map\PhpauthConfigTableMap;
  * @method     ChildPhpauthConfigQuery rightJoinWith($relation) Adds a RIGHT JOIN clause and with to the query
  * @method     ChildPhpauthConfigQuery innerJoinWith($relation) Adds a INNER JOIN clause and with to the query
  *
- * @method     ChildPhpauthConfig findOne(ConnectionInterface $con = null) Return the first ChildPhpauthConfig matching the query
+ * @method     ChildPhpauthConfig|null findOne(ConnectionInterface $con = null) Return the first ChildPhpauthConfig matching the query
  * @method     ChildPhpauthConfig findOneOrCreate(ConnectionInterface $con = null) Return the first ChildPhpauthConfig matching the query, or a new ChildPhpauthConfig object populated from the query conditions when no match is found
  *
- * @method     ChildPhpauthConfig findOneBySetting(string $setting) Return the first ChildPhpauthConfig filtered by the setting column
- * @method     ChildPhpauthConfig findOneByValue(string $value) Return the first ChildPhpauthConfig filtered by the value column *
+ * @method     ChildPhpauthConfig|null findOneBySetting(string $setting) Return the first ChildPhpauthConfig filtered by the setting column
+ * @method     ChildPhpauthConfig|null findOneByValue(string $value) Return the first ChildPhpauthConfig filtered by the value column *
 
  * @method     ChildPhpauthConfig requirePk($key, ConnectionInterface $con = null) Return the ChildPhpauthConfig by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildPhpauthConfig requireOne(ConnectionInterface $con = null) Return the first ChildPhpauthConfig matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found

@@ -1,8 +1,9 @@
 <?php
 
 
+use db\scc\scc\PhpauthUsersQuery;
 
-	require_once 'vendor/autoload.php';
+require_once 'vendor/autoload.php';
 	require_once 'db/generated-conf/config.php';
 	require_once 'model/DbManager.php';
 
@@ -26,7 +27,7 @@
 		private $auth;
 
 		/**
-		 * @var \scc\scc\PhpauthUsersQuery Istanza di PhpauthUsers Query.
+		 * @var PhpauthUsersQuery Istanza di PhpauthUsers Query.
 		 */
 		private $uq;
 
@@ -35,7 +36,7 @@
 			$this->dbh = DbManager::getDb();
 			$this->config = new PHPAuth\Config($this->dbh, null, null, "it_IT");
 			$this->auth = new PHPAuth\Auth($this->dbh, $this->config);
-			//$this->uq = new \scc\scc\PhpauthUsersQuery();
+			$this->uq = new PhpauthUsersQuery();
 		}
 
 		function index()

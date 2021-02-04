@@ -90,7 +90,7 @@ abstract class Partecipa implements ActiveRecordInterface
     /**
      * The value for the id_gruppo field.
      *
-     * @var        int
+     * @var        int|null
      */
     protected $id_gruppo;
 
@@ -294,7 +294,7 @@ abstract class Partecipa implements ActiveRecordInterface
      * @param string $name  The virtual column name
      * @param mixed  $value The value to give to the virtual column
      *
-     * @return $this|Partecipa The current object, for fluid interface
+     * @return $this The current object, for fluid interface
      */
     public function setVirtualColumn($name, $value)
     {
@@ -308,11 +308,11 @@ abstract class Partecipa implements ActiveRecordInterface
      *
      * @param  string  $msg
      * @param  int     $priority One of the Propel::LOG_* logging levels
-     * @return boolean
+     * @return void
      */
     protected function log($msg, $priority = Propel::LOG_INFO)
     {
-        return Propel::log(get_class($this) . ': ' . $msg, $priority);
+        Propel::log(get_class($this) . ': ' . $msg, $priority);
     }
 
     /**
@@ -388,7 +388,7 @@ abstract class Partecipa implements ActiveRecordInterface
     /**
      * Get the [id_gruppo] column value.
      *
-     * @return int
+     * @return int|null
      */
     public function getIdGruppo()
     {
@@ -398,7 +398,7 @@ abstract class Partecipa implements ActiveRecordInterface
     /**
      * Set the value of [id_utente] column.
      *
-     * @param string $v new value
+     * @param string $v New value
      * @return $this|\scc\scc\Partecipa The current object (for fluent API support)
      */
     public function setIdUtente($v)
@@ -422,7 +422,7 @@ abstract class Partecipa implements ActiveRecordInterface
     /**
      * Set the value of [id_evento] column.
      *
-     * @param int $v new value
+     * @param int $v New value
      * @return $this|\scc\scc\Partecipa The current object (for fluent API support)
      */
     public function setIdEvento($v)
@@ -446,7 +446,7 @@ abstract class Partecipa implements ActiveRecordInterface
     /**
      * Set the value of [tipo] column.
      *
-     * @param string $v new value
+     * @param string $v New value
      * @return $this|\scc\scc\Partecipa The current object (for fluent API support)
      */
     public function setTipo($v)
@@ -466,7 +466,7 @@ abstract class Partecipa implements ActiveRecordInterface
     /**
      * Set the value of [id_gruppo] column.
      *
-     * @param int $v new value
+     * @param int|null $v New value
      * @return $this|\scc\scc\Partecipa The current object (for fluent API support)
      */
     public function setIdGruppo($v)
@@ -1299,7 +1299,7 @@ abstract class Partecipa implements ActiveRecordInterface
     /**
      * Declares an association between this object and a ChildGruppo object.
      *
-     * @param  ChildGruppo $v
+     * @param  ChildGruppo|null $v
      * @return $this|\scc\scc\Partecipa The current object (for fluent API support)
      * @throws PropelException
      */
@@ -1328,7 +1328,7 @@ abstract class Partecipa implements ActiveRecordInterface
      * Get the associated ChildGruppo object
      *
      * @param  ConnectionInterface $con Optional Connection object.
-     * @return ChildGruppo The associated ChildGruppo object.
+     * @return ChildGruppo|null The associated ChildGruppo object.
      * @throws PropelException
      */
     public function getGruppo(ConnectionInterface $con = null)
@@ -1461,10 +1461,7 @@ abstract class Partecipa implements ActiveRecordInterface
      */
     public function preSave(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::preSave')) {
-            return parent::preSave($con);
-        }
-        return true;
+                return true;
     }
 
     /**
@@ -1473,10 +1470,7 @@ abstract class Partecipa implements ActiveRecordInterface
      */
     public function postSave(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::postSave')) {
-            parent::postSave($con);
-        }
-    }
+            }
 
     /**
      * Code to be run before inserting to database
@@ -1485,10 +1479,7 @@ abstract class Partecipa implements ActiveRecordInterface
      */
     public function preInsert(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::preInsert')) {
-            return parent::preInsert($con);
-        }
-        return true;
+                return true;
     }
 
     /**
@@ -1497,10 +1488,7 @@ abstract class Partecipa implements ActiveRecordInterface
      */
     public function postInsert(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::postInsert')) {
-            parent::postInsert($con);
-        }
-    }
+            }
 
     /**
      * Code to be run before updating the object in database
@@ -1509,10 +1497,7 @@ abstract class Partecipa implements ActiveRecordInterface
      */
     public function preUpdate(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::preUpdate')) {
-            return parent::preUpdate($con);
-        }
-        return true;
+                return true;
     }
 
     /**
@@ -1521,10 +1506,7 @@ abstract class Partecipa implements ActiveRecordInterface
      */
     public function postUpdate(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::postUpdate')) {
-            parent::postUpdate($con);
-        }
-    }
+            }
 
     /**
      * Code to be run before deleting the object in database
@@ -1533,10 +1515,7 @@ abstract class Partecipa implements ActiveRecordInterface
      */
     public function preDelete(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::preDelete')) {
-            return parent::preDelete($con);
-        }
-        return true;
+                return true;
     }
 
     /**
@@ -1545,10 +1524,7 @@ abstract class Partecipa implements ActiveRecordInterface
      */
     public function postDelete(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::postDelete')) {
-            parent::postDelete($con);
-        }
-    }
+            }
 
 
     /**

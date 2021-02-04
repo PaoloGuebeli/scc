@@ -70,13 +70,13 @@ use scc\scc\Map\PartecipaTableMap;
  *
  * @method     \scc\scc\EventoQuery|\scc\scc\GruppoQuery|\scc\scc\UtenteQuery endUse() Finalizes a secondary criteria and merges it with its primary Criteria
  *
- * @method     ChildPartecipa findOne(ConnectionInterface $con = null) Return the first ChildPartecipa matching the query
+ * @method     ChildPartecipa|null findOne(ConnectionInterface $con = null) Return the first ChildPartecipa matching the query
  * @method     ChildPartecipa findOneOrCreate(ConnectionInterface $con = null) Return the first ChildPartecipa matching the query, or a new ChildPartecipa object populated from the query conditions when no match is found
  *
- * @method     ChildPartecipa findOneByIdUtente(string $Id_Utente) Return the first ChildPartecipa filtered by the Id_Utente column
- * @method     ChildPartecipa findOneByIdEvento(int $Id_Evento) Return the first ChildPartecipa filtered by the Id_Evento column
- * @method     ChildPartecipa findOneByTipo(string $Tipo) Return the first ChildPartecipa filtered by the Tipo column
- * @method     ChildPartecipa findOneByIdGruppo(int $Id_Gruppo) Return the first ChildPartecipa filtered by the Id_Gruppo column *
+ * @method     ChildPartecipa|null findOneByIdUtente(string $Id_Utente) Return the first ChildPartecipa filtered by the Id_Utente column
+ * @method     ChildPartecipa|null findOneByIdEvento(int $Id_Evento) Return the first ChildPartecipa filtered by the Id_Evento column
+ * @method     ChildPartecipa|null findOneByTipo(string $Tipo) Return the first ChildPartecipa filtered by the Tipo column
+ * @method     ChildPartecipa|null findOneByIdGruppo(int $Id_Gruppo) Return the first ChildPartecipa filtered by the Id_Gruppo column *
 
  * @method     ChildPartecipa requirePk($key, ConnectionInterface $con = null) Return the ChildPartecipa by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildPartecipa requireOne(ConnectionInterface $con = null) Return the first ChildPartecipa matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found

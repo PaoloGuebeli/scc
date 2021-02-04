@@ -278,7 +278,7 @@ abstract class Evento implements ActiveRecordInterface
      * @param string $name  The virtual column name
      * @param mixed  $value The value to give to the virtual column
      *
-     * @return $this|Evento The current object, for fluid interface
+     * @return $this The current object, for fluid interface
      */
     public function setVirtualColumn($name, $value)
     {
@@ -292,11 +292,11 @@ abstract class Evento implements ActiveRecordInterface
      *
      * @param  string  $msg
      * @param  int     $priority One of the Propel::LOG_* logging levels
-     * @return boolean
+     * @return void
      */
     protected function log($msg, $priority = Propel::LOG_INFO)
     {
-        return Propel::log(get_class($this) . ': ' . $msg, $priority);
+        Propel::log(get_class($this) . ': ' . $msg, $priority);
     }
 
     /**
@@ -373,14 +373,14 @@ abstract class Evento implements ActiveRecordInterface
      * Get the [optionally formatted] temporal [data_inizio] column value.
      *
      *
-     * @param      string|null $format The date/time format string (either date()-style or strftime()-style).
-     *                            If format is NULL, then the raw DateTime object will be returned.
+     * @param string|null $format The date/time format string (either date()-style or strftime()-style).
+     *   If format is NULL, then the raw DateTime object will be returned.
      *
      * @return string|DateTime Formatted date/time value as string or DateTime object (if format is NULL), NULL if column is NULL, and 0 if column value is 0000-00-00
      *
      * @throws PropelException - if unable to parse/validate the date/time value.
      */
-    public function getDataInizio($format = NULL)
+    public function getDataInizio($format = null)
     {
         if ($format === null) {
             return $this->data_inizio;
@@ -392,7 +392,7 @@ abstract class Evento implements ActiveRecordInterface
     /**
      * Set the value of [id] column.
      *
-     * @param int $v new value
+     * @param int $v New value
      * @return $this|\scc\scc\Evento The current object (for fluent API support)
      */
     public function setId($v)
@@ -412,7 +412,7 @@ abstract class Evento implements ActiveRecordInterface
     /**
      * Set the value of [nome] column.
      *
-     * @param string $v new value
+     * @param string $v New value
      * @return $this|\scc\scc\Evento The current object (for fluent API support)
      */
     public function setNome($v)
@@ -432,7 +432,7 @@ abstract class Evento implements ActiveRecordInterface
     /**
      * Set the value of [descr] column.
      *
-     * @param string $v new value
+     * @param string $v New value
      * @return $this|\scc\scc\Evento The current object (for fluent API support)
      */
     public function setDescr($v)
@@ -452,7 +452,7 @@ abstract class Evento implements ActiveRecordInterface
     /**
      * Sets the value of [data_inizio] column to a normalized version of the date/time value specified.
      *
-     * @param  mixed $v string, integer (timestamp), or \DateTimeInterface value.
+     * @param  string|integer|\DateTimeInterface $v string, integer (timestamp), or \DateTimeInterface value.
      *               Empty strings are treated as NULL.
      * @return $this|\scc\scc\Evento The current object (for fluent API support)
      */
@@ -892,7 +892,7 @@ abstract class Evento implements ActiveRecordInterface
             $keys[3] => $this->getDataInizio(),
         );
         if ($result[$keys[3]] instanceof \DateTimeInterface) {
-            $result[$keys[3]] = $result[$keys[3]]->format('c');
+            $result[$keys[3]] = $result[$keys[3]]->format('Y-m-d');
         }
 
         $virtualColumns = $this->virtualColumns;
@@ -1195,7 +1195,7 @@ abstract class Evento implements ActiveRecordInterface
      */
     public function initRelation($relationName)
     {
-        if ('Partecipa' == $relationName) {
+        if ('Partecipa' === $relationName) {
             $this->initPartecipas();
             return;
         }
@@ -1264,10 +1264,19 @@ abstract class Evento implements ActiveRecordInterface
     public function getPartecipas(Criteria $criteria = null, ConnectionInterface $con = null)
     {
         $partial = $this->collPartecipasPartial && !$this->isNew();
-        if (null === $this->collPartecipas || null !== $criteria  || $partial) {
-            if ($this->isNew() && null === $this->collPartecipas) {
+        if (null === $this->collPartecipas || null !== $criteria || $partial) {
+            if ($this->isNew()) {
                 // return empty collection
-                $this->initPartecipas();
+                if (null === $this->collPartecipas) {
+                    $this->initPartecipas();
+                } else {
+                    $collectionClassName = PartecipaTableMap::getTableMap()->getCollectionClassName();
+
+                    $collPartecipas = new $collectionClassName;
+                    $collPartecipas->setModel('\scc\scc\Partecipa');
+
+                    return $collPartecipas;
+                }
             } else {
                 $collPartecipas = ChildPartecipaQuery::create(null, $criteria)
                     ->filterByEvento($this)
@@ -1535,10 +1544,7 @@ abstract class Evento implements ActiveRecordInterface
      */
     public function preSave(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::preSave')) {
-            return parent::preSave($con);
-        }
-        return true;
+                return true;
     }
 
     /**
@@ -1547,10 +1553,7 @@ abstract class Evento implements ActiveRecordInterface
      */
     public function postSave(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::postSave')) {
-            parent::postSave($con);
-        }
-    }
+            }
 
     /**
      * Code to be run before inserting to database
@@ -1559,10 +1562,7 @@ abstract class Evento implements ActiveRecordInterface
      */
     public function preInsert(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::preInsert')) {
-            return parent::preInsert($con);
-        }
-        return true;
+                return true;
     }
 
     /**
@@ -1571,10 +1571,7 @@ abstract class Evento implements ActiveRecordInterface
      */
     public function postInsert(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::postInsert')) {
-            parent::postInsert($con);
-        }
-    }
+            }
 
     /**
      * Code to be run before updating the object in database
@@ -1583,10 +1580,7 @@ abstract class Evento implements ActiveRecordInterface
      */
     public function preUpdate(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::preUpdate')) {
-            return parent::preUpdate($con);
-        }
-        return true;
+                return true;
     }
 
     /**
@@ -1595,10 +1589,7 @@ abstract class Evento implements ActiveRecordInterface
      */
     public function postUpdate(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::postUpdate')) {
-            parent::postUpdate($con);
-        }
-    }
+            }
 
     /**
      * Code to be run before deleting the object in database
@@ -1607,10 +1598,7 @@ abstract class Evento implements ActiveRecordInterface
      */
     public function preDelete(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::preDelete')) {
-            return parent::preDelete($con);
-        }
-        return true;
+                return true;
     }
 
     /**
@@ -1619,10 +1607,7 @@ abstract class Evento implements ActiveRecordInterface
      */
     public function postDelete(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::postDelete')) {
-            parent::postDelete($con);
-        }
-    }
+            }
 
 
     /**

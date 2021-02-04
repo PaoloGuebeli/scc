@@ -69,7 +69,7 @@ abstract class PhpauthConfig implements ActiveRecordInterface
     /**
      * The value for the value field.
      *
-     * @var        string
+     * @var        string|null
      */
     protected $value;
 
@@ -245,7 +245,7 @@ abstract class PhpauthConfig implements ActiveRecordInterface
      * @param string $name  The virtual column name
      * @param mixed  $value The value to give to the virtual column
      *
-     * @return $this|PhpauthConfig The current object, for fluid interface
+     * @return $this The current object, for fluid interface
      */
     public function setVirtualColumn($name, $value)
     {
@@ -259,11 +259,11 @@ abstract class PhpauthConfig implements ActiveRecordInterface
      *
      * @param  string  $msg
      * @param  int     $priority One of the Propel::LOG_* logging levels
-     * @return boolean
+     * @return void
      */
     protected function log($msg, $priority = Propel::LOG_INFO)
     {
-        return Propel::log(get_class($this) . ': ' . $msg, $priority);
+        Propel::log(get_class($this) . ': ' . $msg, $priority);
     }
 
     /**
@@ -319,7 +319,7 @@ abstract class PhpauthConfig implements ActiveRecordInterface
     /**
      * Get the [value] column value.
      *
-     * @return string
+     * @return string|null
      */
     public function getValue()
     {
@@ -329,7 +329,7 @@ abstract class PhpauthConfig implements ActiveRecordInterface
     /**
      * Set the value of [setting] column.
      *
-     * @param string $v new value
+     * @param string $v New value
      * @return $this|\scc\scc\PhpauthConfig The current object (for fluent API support)
      */
     public function setSetting($v)
@@ -349,7 +349,7 @@ abstract class PhpauthConfig implements ActiveRecordInterface
     /**
      * Set the value of [value] column.
      *
-     * @param string $v new value
+     * @param string|null $v New value
      * @return $this|\scc\scc\PhpauthConfig The current object (for fluent API support)
      */
     public function setValue($v)
@@ -1017,10 +1017,7 @@ abstract class PhpauthConfig implements ActiveRecordInterface
      */
     public function preSave(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::preSave')) {
-            return parent::preSave($con);
-        }
-        return true;
+                return true;
     }
 
     /**
@@ -1029,10 +1026,7 @@ abstract class PhpauthConfig implements ActiveRecordInterface
      */
     public function postSave(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::postSave')) {
-            parent::postSave($con);
-        }
-    }
+            }
 
     /**
      * Code to be run before inserting to database
@@ -1041,10 +1035,7 @@ abstract class PhpauthConfig implements ActiveRecordInterface
      */
     public function preInsert(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::preInsert')) {
-            return parent::preInsert($con);
-        }
-        return true;
+                return true;
     }
 
     /**
@@ -1053,10 +1044,7 @@ abstract class PhpauthConfig implements ActiveRecordInterface
      */
     public function postInsert(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::postInsert')) {
-            parent::postInsert($con);
-        }
-    }
+            }
 
     /**
      * Code to be run before updating the object in database
@@ -1065,10 +1053,7 @@ abstract class PhpauthConfig implements ActiveRecordInterface
      */
     public function preUpdate(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::preUpdate')) {
-            return parent::preUpdate($con);
-        }
-        return true;
+                return true;
     }
 
     /**
@@ -1077,10 +1062,7 @@ abstract class PhpauthConfig implements ActiveRecordInterface
      */
     public function postUpdate(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::postUpdate')) {
-            parent::postUpdate($con);
-        }
-    }
+            }
 
     /**
      * Code to be run before deleting the object in database
@@ -1089,10 +1071,7 @@ abstract class PhpauthConfig implements ActiveRecordInterface
      */
     public function preDelete(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::preDelete')) {
-            return parent::preDelete($con);
-        }
-        return true;
+                return true;
     }
 
     /**
@@ -1101,10 +1080,7 @@ abstract class PhpauthConfig implements ActiveRecordInterface
      */
     public function postDelete(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::postDelete')) {
-            parent::postDelete($con);
-        }
-    }
+            }
 
 
     /**

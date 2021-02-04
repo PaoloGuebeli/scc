@@ -114,6 +114,31 @@ class PhpauthEmailsBannedTableMap extends TableMap
     );
 
     /**
+     * Holds a list of column names and their normalized version.
+     *
+     * @var string[]
+     */
+    protected $normalizedColumnNameMap = [
+
+        'Id' => 'ID',
+        'PhpauthEmailsBanned.Id' => 'ID',
+        'id' => 'ID',
+        'phpauthEmailsBanned.id' => 'ID',
+        'PhpauthEmailsBannedTableMap::COL_ID' => 'ID',
+        'COL_ID' => 'ID',
+        'id' => 'ID',
+        'phpauth_emails_banned.id' => 'ID',
+        'Domain' => 'DOMAIN',
+        'PhpauthEmailsBanned.Domain' => 'DOMAIN',
+        'domain' => 'DOMAIN',
+        'phpauthEmailsBanned.domain' => 'DOMAIN',
+        'PhpauthEmailsBannedTableMap::COL_DOMAIN' => 'DOMAIN',
+        'COL_DOMAIN' => 'DOMAIN',
+        'domain' => 'DOMAIN',
+        'phpauth_emails_banned.domain' => 'DOMAIN',
+    ];
+
+    /**
      * Initialize the table attributes and columns
      * Relations are not initialized by this method since they are lazy loaded
      *
@@ -287,6 +312,28 @@ class PhpauthEmailsBannedTableMap extends TableMap
         } else {
             $criteria->addSelectColumn($alias . '.id');
             $criteria->addSelectColumn($alias . '.domain');
+        }
+    }
+
+    /**
+     * Remove all the columns needed to create a new object.
+     *
+     * Note: any columns that were marked with lazyLoad="true" in the
+     * XML schema will not be removed as they are only loaded on demand.
+     *
+     * @param Criteria $criteria object containing the columns to remove.
+     * @param string   $alias    optional table alias
+     * @throws PropelException Any exceptions caught during processing will be
+     *                         rethrown wrapped into a PropelException.
+     */
+    public static function removeSelectColumns(Criteria $criteria, $alias = null)
+    {
+        if (null === $alias) {
+            $criteria->removeSelectColumn(PhpauthEmailsBannedTableMap::COL_ID);
+            $criteria->removeSelectColumn(PhpauthEmailsBannedTableMap::COL_DOMAIN);
+        } else {
+            $criteria->removeSelectColumn($alias . '.id');
+            $criteria->removeSelectColumn($alias . '.domain');
         }
     }
 

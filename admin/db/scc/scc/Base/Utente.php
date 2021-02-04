@@ -72,6 +72,13 @@ abstract class Utente implements ActiveRecordInterface
     protected $username;
 
     /**
+     * The value for the email field.
+     *
+     * @var        string|null
+     */
+    protected $email;
+
+    /**
      * The value for the nome field.
      *
      * @var        string
@@ -89,7 +96,7 @@ abstract class Utente implements ActiveRecordInterface
      * The value for the telefono field.
      *
      * Note: this column has a database default value of: '0'
-     * @var        string
+     * @var        string|null
      */
     protected $telefono;
 
@@ -111,7 +118,7 @@ abstract class Utente implements ActiveRecordInterface
     /**
      * The value for the pass field.
      *
-     * @var        string
+     * @var        string|null
      */
     protected $pass;
 
@@ -313,7 +320,7 @@ abstract class Utente implements ActiveRecordInterface
      * @param string $name  The virtual column name
      * @param mixed  $value The value to give to the virtual column
      *
-     * @return $this|Utente The current object, for fluid interface
+     * @return $this The current object, for fluid interface
      */
     public function setVirtualColumn($name, $value)
     {
@@ -327,11 +334,11 @@ abstract class Utente implements ActiveRecordInterface
      *
      * @param  string  $msg
      * @param  int     $priority One of the Propel::LOG_* logging levels
-     * @return boolean
+     * @return void
      */
     protected function log($msg, $priority = Propel::LOG_INFO)
     {
-        return Propel::log(get_class($this) . ': ' . $msg, $priority);
+        Propel::log(get_class($this) . ': ' . $msg, $priority);
     }
 
     /**
@@ -385,6 +392,16 @@ abstract class Utente implements ActiveRecordInterface
     }
 
     /**
+     * Get the [email] column value.
+     *
+     * @return string|null
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
      * Get the [nome] column value.
      *
      * @return string
@@ -407,7 +424,7 @@ abstract class Utente implements ActiveRecordInterface
     /**
      * Get the [telefono] column value.
      *
-     * @return string
+     * @return string|null
      */
     public function getTelefono()
     {
@@ -437,7 +454,7 @@ abstract class Utente implements ActiveRecordInterface
     /**
      * Get the [pass] column value.
      *
-     * @return string
+     * @return string|null
      */
     public function getPass()
     {
@@ -447,7 +464,7 @@ abstract class Utente implements ActiveRecordInterface
     /**
      * Set the value of [username] column.
      *
-     * @param string $v new value
+     * @param string $v New value
      * @return $this|\scc\scc\Utente The current object (for fluent API support)
      */
     public function setUsername($v)
@@ -465,9 +482,29 @@ abstract class Utente implements ActiveRecordInterface
     } // setUsername()
 
     /**
+     * Set the value of [email] column.
+     *
+     * @param string|null $v New value
+     * @return $this|\scc\scc\Utente The current object (for fluent API support)
+     */
+    public function setEmail($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->email !== $v) {
+            $this->email = $v;
+            $this->modifiedColumns[UtenteTableMap::COL_EMAIL] = true;
+        }
+
+        return $this;
+    } // setEmail()
+
+    /**
      * Set the value of [nome] column.
      *
-     * @param string $v new value
+     * @param string $v New value
      * @return $this|\scc\scc\Utente The current object (for fluent API support)
      */
     public function setNome($v)
@@ -487,7 +524,7 @@ abstract class Utente implements ActiveRecordInterface
     /**
      * Set the value of [cognome] column.
      *
-     * @param string $v new value
+     * @param string $v New value
      * @return $this|\scc\scc\Utente The current object (for fluent API support)
      */
     public function setCognome($v)
@@ -507,7 +544,7 @@ abstract class Utente implements ActiveRecordInterface
     /**
      * Set the value of [telefono] column.
      *
-     * @param string $v new value
+     * @param string|null $v New value
      * @return $this|\scc\scc\Utente The current object (for fluent API support)
      */
     public function setTelefono($v)
@@ -527,7 +564,7 @@ abstract class Utente implements ActiveRecordInterface
     /**
      * Set the value of [grado] column.
      *
-     * @param int $v new value
+     * @param int $v New value
      * @return $this|\scc\scc\Utente The current object (for fluent API support)
      */
     public function setGrado($v)
@@ -547,7 +584,7 @@ abstract class Utente implements ActiveRecordInterface
     /**
      * Set the value of [anno_nascita] column.
      *
-     * @param int $v new value
+     * @param int $v New value
      * @return $this|\scc\scc\Utente The current object (for fluent API support)
      */
     public function setAnnoNascita($v)
@@ -567,7 +604,7 @@ abstract class Utente implements ActiveRecordInterface
     /**
      * Set the value of [pass] column.
      *
-     * @param string $v new value
+     * @param string|null $v New value
      * @return $this|\scc\scc\Utente The current object (for fluent API support)
      */
     public function setPass($v)
@@ -631,22 +668,25 @@ abstract class Utente implements ActiveRecordInterface
             $col = $row[TableMap::TYPE_NUM == $indexType ? 0 + $startcol : UtenteTableMap::translateFieldName('Username', TableMap::TYPE_PHPNAME, $indexType)];
             $this->username = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 1 + $startcol : UtenteTableMap::translateFieldName('Nome', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 1 + $startcol : UtenteTableMap::translateFieldName('Email', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->email = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : UtenteTableMap::translateFieldName('Nome', TableMap::TYPE_PHPNAME, $indexType)];
             $this->nome = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : UtenteTableMap::translateFieldName('Cognome', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 3 + $startcol : UtenteTableMap::translateFieldName('Cognome', TableMap::TYPE_PHPNAME, $indexType)];
             $this->cognome = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 3 + $startcol : UtenteTableMap::translateFieldName('Telefono', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 4 + $startcol : UtenteTableMap::translateFieldName('Telefono', TableMap::TYPE_PHPNAME, $indexType)];
             $this->telefono = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 4 + $startcol : UtenteTableMap::translateFieldName('Grado', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 5 + $startcol : UtenteTableMap::translateFieldName('Grado', TableMap::TYPE_PHPNAME, $indexType)];
             $this->grado = (null !== $col) ? (int) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 5 + $startcol : UtenteTableMap::translateFieldName('AnnoNascita', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 6 + $startcol : UtenteTableMap::translateFieldName('AnnoNascita', TableMap::TYPE_PHPNAME, $indexType)];
             $this->anno_nascita = (null !== $col) ? (int) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 6 + $startcol : UtenteTableMap::translateFieldName('Pass', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 7 + $startcol : UtenteTableMap::translateFieldName('Pass', TableMap::TYPE_PHPNAME, $indexType)];
             $this->pass = (null !== $col) ? (string) $col : null;
             $this->resetModified();
 
@@ -656,7 +696,7 @@ abstract class Utente implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 7; // 7 = UtenteTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 8; // 8 = UtenteTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
             throw new PropelException(sprintf('Error populating %s object', '\\scc\\scc\\Utente'), 0, $e);
@@ -875,6 +915,9 @@ abstract class Utente implements ActiveRecordInterface
         if ($this->isColumnModified(UtenteTableMap::COL_USERNAME)) {
             $modifiedColumns[':p' . $index++]  = 'Username';
         }
+        if ($this->isColumnModified(UtenteTableMap::COL_EMAIL)) {
+            $modifiedColumns[':p' . $index++]  = 'Email';
+        }
         if ($this->isColumnModified(UtenteTableMap::COL_NOME)) {
             $modifiedColumns[':p' . $index++]  = 'Nome';
         }
@@ -906,6 +949,9 @@ abstract class Utente implements ActiveRecordInterface
                 switch ($columnName) {
                     case 'Username':
                         $stmt->bindValue($identifier, $this->username, PDO::PARAM_STR);
+                        break;
+                    case 'Email':
+                        $stmt->bindValue($identifier, $this->email, PDO::PARAM_STR);
                         break;
                     case 'Nome':
                         $stmt->bindValue($identifier, $this->nome, PDO::PARAM_STR);
@@ -984,21 +1030,24 @@ abstract class Utente implements ActiveRecordInterface
                 return $this->getUsername();
                 break;
             case 1:
-                return $this->getNome();
+                return $this->getEmail();
                 break;
             case 2:
-                return $this->getCognome();
+                return $this->getNome();
                 break;
             case 3:
-                return $this->getTelefono();
+                return $this->getCognome();
                 break;
             case 4:
-                return $this->getGrado();
+                return $this->getTelefono();
                 break;
             case 5:
-                return $this->getAnnoNascita();
+                return $this->getGrado();
                 break;
             case 6:
+                return $this->getAnnoNascita();
+                break;
+            case 7:
                 return $this->getPass();
                 break;
             default:
@@ -1032,12 +1081,13 @@ abstract class Utente implements ActiveRecordInterface
         $keys = UtenteTableMap::getFieldNames($keyType);
         $result = array(
             $keys[0] => $this->getUsername(),
-            $keys[1] => $this->getNome(),
-            $keys[2] => $this->getCognome(),
-            $keys[3] => $this->getTelefono(),
-            $keys[4] => $this->getGrado(),
-            $keys[5] => $this->getAnnoNascita(),
-            $keys[6] => $this->getPass(),
+            $keys[1] => $this->getEmail(),
+            $keys[2] => $this->getNome(),
+            $keys[3] => $this->getCognome(),
+            $keys[4] => $this->getTelefono(),
+            $keys[5] => $this->getGrado(),
+            $keys[6] => $this->getAnnoNascita(),
+            $keys[7] => $this->getPass(),
         );
         $virtualColumns = $this->virtualColumns;
         foreach ($virtualColumns as $key => $virtualColumn) {
@@ -1098,21 +1148,24 @@ abstract class Utente implements ActiveRecordInterface
                 $this->setUsername($value);
                 break;
             case 1:
-                $this->setNome($value);
+                $this->setEmail($value);
                 break;
             case 2:
-                $this->setCognome($value);
+                $this->setNome($value);
                 break;
             case 3:
-                $this->setTelefono($value);
+                $this->setCognome($value);
                 break;
             case 4:
-                $this->setGrado($value);
+                $this->setTelefono($value);
                 break;
             case 5:
-                $this->setAnnoNascita($value);
+                $this->setGrado($value);
                 break;
             case 6:
+                $this->setAnnoNascita($value);
+                break;
+            case 7:
                 $this->setPass($value);
                 break;
         } // switch()
@@ -1145,22 +1198,25 @@ abstract class Utente implements ActiveRecordInterface
             $this->setUsername($arr[$keys[0]]);
         }
         if (array_key_exists($keys[1], $arr)) {
-            $this->setNome($arr[$keys[1]]);
+            $this->setEmail($arr[$keys[1]]);
         }
         if (array_key_exists($keys[2], $arr)) {
-            $this->setCognome($arr[$keys[2]]);
+            $this->setNome($arr[$keys[2]]);
         }
         if (array_key_exists($keys[3], $arr)) {
-            $this->setTelefono($arr[$keys[3]]);
+            $this->setCognome($arr[$keys[3]]);
         }
         if (array_key_exists($keys[4], $arr)) {
-            $this->setGrado($arr[$keys[4]]);
+            $this->setTelefono($arr[$keys[4]]);
         }
         if (array_key_exists($keys[5], $arr)) {
-            $this->setAnnoNascita($arr[$keys[5]]);
+            $this->setGrado($arr[$keys[5]]);
         }
         if (array_key_exists($keys[6], $arr)) {
-            $this->setPass($arr[$keys[6]]);
+            $this->setAnnoNascita($arr[$keys[6]]);
+        }
+        if (array_key_exists($keys[7], $arr)) {
+            $this->setPass($arr[$keys[7]]);
         }
     }
 
@@ -1205,6 +1261,9 @@ abstract class Utente implements ActiveRecordInterface
 
         if ($this->isColumnModified(UtenteTableMap::COL_USERNAME)) {
             $criteria->add(UtenteTableMap::COL_USERNAME, $this->username);
+        }
+        if ($this->isColumnModified(UtenteTableMap::COL_EMAIL)) {
+            $criteria->add(UtenteTableMap::COL_EMAIL, $this->email);
         }
         if ($this->isColumnModified(UtenteTableMap::COL_NOME)) {
             $criteria->add(UtenteTableMap::COL_NOME, $this->nome);
@@ -1311,6 +1370,7 @@ abstract class Utente implements ActiveRecordInterface
     public function copyInto($copyObj, $deepCopy = false, $makeNew = true)
     {
         $copyObj->setUsername($this->getUsername());
+        $copyObj->setEmail($this->getEmail());
         $copyObj->setNome($this->getNome());
         $copyObj->setCognome($this->getCognome());
         $copyObj->setTelefono($this->getTelefono());
@@ -1369,7 +1429,7 @@ abstract class Utente implements ActiveRecordInterface
      */
     public function initRelation($relationName)
     {
-        if ('Partecipa' == $relationName) {
+        if ('Partecipa' === $relationName) {
             $this->initPartecipas();
             return;
         }
@@ -1438,10 +1498,19 @@ abstract class Utente implements ActiveRecordInterface
     public function getPartecipas(Criteria $criteria = null, ConnectionInterface $con = null)
     {
         $partial = $this->collPartecipasPartial && !$this->isNew();
-        if (null === $this->collPartecipas || null !== $criteria  || $partial) {
-            if ($this->isNew() && null === $this->collPartecipas) {
+        if (null === $this->collPartecipas || null !== $criteria || $partial) {
+            if ($this->isNew()) {
                 // return empty collection
-                $this->initPartecipas();
+                if (null === $this->collPartecipas) {
+                    $this->initPartecipas();
+                } else {
+                    $collectionClassName = PartecipaTableMap::getTableMap()->getCollectionClassName();
+
+                    $collPartecipas = new $collectionClassName;
+                    $collPartecipas->setModel('\scc\scc\Partecipa');
+
+                    return $collPartecipas;
+                }
             } else {
                 $collPartecipas = ChildPartecipaQuery::create(null, $criteria)
                     ->filterByUtente($this)
@@ -1661,6 +1730,7 @@ abstract class Utente implements ActiveRecordInterface
     public function clear()
     {
         $this->username = null;
+        $this->email = null;
         $this->nome = null;
         $this->cognome = null;
         $this->telefono = null;
@@ -1713,10 +1783,7 @@ abstract class Utente implements ActiveRecordInterface
      */
     public function preSave(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::preSave')) {
-            return parent::preSave($con);
-        }
-        return true;
+                return true;
     }
 
     /**
@@ -1725,10 +1792,7 @@ abstract class Utente implements ActiveRecordInterface
      */
     public function postSave(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::postSave')) {
-            parent::postSave($con);
-        }
-    }
+            }
 
     /**
      * Code to be run before inserting to database
@@ -1737,10 +1801,7 @@ abstract class Utente implements ActiveRecordInterface
      */
     public function preInsert(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::preInsert')) {
-            return parent::preInsert($con);
-        }
-        return true;
+                return true;
     }
 
     /**
@@ -1749,10 +1810,7 @@ abstract class Utente implements ActiveRecordInterface
      */
     public function postInsert(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::postInsert')) {
-            parent::postInsert($con);
-        }
-    }
+            }
 
     /**
      * Code to be run before updating the object in database
@@ -1761,10 +1819,7 @@ abstract class Utente implements ActiveRecordInterface
      */
     public function preUpdate(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::preUpdate')) {
-            return parent::preUpdate($con);
-        }
-        return true;
+                return true;
     }
 
     /**
@@ -1773,10 +1828,7 @@ abstract class Utente implements ActiveRecordInterface
      */
     public function postUpdate(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::postUpdate')) {
-            parent::postUpdate($con);
-        }
-    }
+            }
 
     /**
      * Code to be run before deleting the object in database
@@ -1785,10 +1837,7 @@ abstract class Utente implements ActiveRecordInterface
      */
     public function preDelete(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::preDelete')) {
-            return parent::preDelete($con);
-        }
-        return true;
+                return true;
     }
 
     /**
@@ -1797,10 +1846,7 @@ abstract class Utente implements ActiveRecordInterface
      */
     public function postDelete(ConnectionInterface $con = null)
     {
-        if (is_callable('parent::postDelete')) {
-            parent::postDelete($con);
-        }
-    }
+            }
 
 
     /**

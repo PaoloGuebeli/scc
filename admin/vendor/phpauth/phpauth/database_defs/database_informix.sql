@@ -23,10 +23,12 @@ INSERT INTO phpauth_config (setting, value) VALUES ('emailmessage_suppress_reset
 INSERT INTO phpauth_config (setting, value) VALUES ('mail_charset','UTF-8');
 INSERT INTO phpauth_config (setting, value) VALUES ('password_min_score',  '3');
 INSERT INTO phpauth_config (setting, value) VALUES ('site_activation_page',  'activate');
+INSERT INTO phpauth_config (setting, value) VALUES ('site_activation_page_append_code', '0');
 INSERT INTO phpauth_config (setting, value) VALUES ('site_email',  'no-reply@example.com');
 INSERT INTO phpauth_config (setting, value) VALUES ('site_key',  'fghuior.)/!/jdUkd8s2!7HVHG7777ghg');
 INSERT INTO phpauth_config (setting, value) VALUES ('site_name', 'PHPAuth');
 INSERT INTO phpauth_config (setting, value) VALUES ('site_password_reset_page',  'reset');
+INSERT INTO phpauth_config (setting, value) VALUES ('site_password_reset_page_append_code', '0');
 INSERT INTO phpauth_config (setting, value) VALUES ('site_timezone', 'Europe/Paris');
 INSERT INTO phpauth_config (setting, value) VALUES ('site_url',  'https://github.com/PHPAuth/PHPAuth');
 INSERT INTO phpauth_config (setting, value) VALUES ('site_language', 'en_GB'),
@@ -52,6 +54,7 @@ INSERT INTO phpauth_config (setting, value) VALUES ('translation_source', 'php')
 INSERT INTO phpauth_config (setting, value) VALUES ('recaptcha_enabled', 0);
 INSERT INTO phpauth_config (setting, value) VALUES ('recaptcha_site_key', '');
 INSERT INTO phpauth_config (setting, value) VALUES ('recaptcha_secret_key', 'php');
+INSERT INTO phpauth_config (setting, value) VALUES ('custom_datetime_format', 'Y-m-d H:i');
 
 DROP TABLE phpauth_attempts;
 CREATE TABLE phpauth_attempts (
@@ -78,6 +81,7 @@ CREATE TABLE phpauth_sessions (
   hash varchar(40) NOT NULL,
   expiredate DATETIME YEAR TO SECOND,
   ip varchar(39) NOT NULL,
+  device_id varchar(36) DEFAULT NULL,
   agent varchar(200) NOT NULL,
   cookie_crc char(40) NOT NULL,
   PRIMARY KEY (id)

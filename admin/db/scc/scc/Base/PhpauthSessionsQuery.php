@@ -43,16 +43,16 @@ use scc\scc\Map\PhpauthSessionsTableMap;
  * @method     ChildPhpauthSessionsQuery rightJoinWith($relation) Adds a RIGHT JOIN clause and with to the query
  * @method     ChildPhpauthSessionsQuery innerJoinWith($relation) Adds a INNER JOIN clause and with to the query
  *
- * @method     ChildPhpauthSessions findOne(ConnectionInterface $con = null) Return the first ChildPhpauthSessions matching the query
+ * @method     ChildPhpauthSessions|null findOne(ConnectionInterface $con = null) Return the first ChildPhpauthSessions matching the query
  * @method     ChildPhpauthSessions findOneOrCreate(ConnectionInterface $con = null) Return the first ChildPhpauthSessions matching the query, or a new ChildPhpauthSessions object populated from the query conditions when no match is found
  *
- * @method     ChildPhpauthSessions findOneById(int $id) Return the first ChildPhpauthSessions filtered by the id column
- * @method     ChildPhpauthSessions findOneByUid(int $uid) Return the first ChildPhpauthSessions filtered by the uid column
- * @method     ChildPhpauthSessions findOneByHash(string $hash) Return the first ChildPhpauthSessions filtered by the hash column
- * @method     ChildPhpauthSessions findOneByExpiredate(string $expiredate) Return the first ChildPhpauthSessions filtered by the expiredate column
- * @method     ChildPhpauthSessions findOneByIp(string $ip) Return the first ChildPhpauthSessions filtered by the ip column
- * @method     ChildPhpauthSessions findOneByAgent(string $agent) Return the first ChildPhpauthSessions filtered by the agent column
- * @method     ChildPhpauthSessions findOneByCookieCrc(string $cookie_crc) Return the first ChildPhpauthSessions filtered by the cookie_crc column *
+ * @method     ChildPhpauthSessions|null findOneById(int $id) Return the first ChildPhpauthSessions filtered by the id column
+ * @method     ChildPhpauthSessions|null findOneByUid(int $uid) Return the first ChildPhpauthSessions filtered by the uid column
+ * @method     ChildPhpauthSessions|null findOneByHash(string $hash) Return the first ChildPhpauthSessions filtered by the hash column
+ * @method     ChildPhpauthSessions|null findOneByExpiredate(string $expiredate) Return the first ChildPhpauthSessions filtered by the expiredate column
+ * @method     ChildPhpauthSessions|null findOneByIp(string $ip) Return the first ChildPhpauthSessions filtered by the ip column
+ * @method     ChildPhpauthSessions|null findOneByAgent(string $agent) Return the first ChildPhpauthSessions filtered by the agent column
+ * @method     ChildPhpauthSessions|null findOneByCookieCrc(string $cookie_crc) Return the first ChildPhpauthSessions filtered by the cookie_crc column *
 
  * @method     ChildPhpauthSessions requirePk($key, ConnectionInterface $con = null) Return the ChildPhpauthSessions by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildPhpauthSessions requireOne(ConnectionInterface $con = null) Return the first ChildPhpauthSessions matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found

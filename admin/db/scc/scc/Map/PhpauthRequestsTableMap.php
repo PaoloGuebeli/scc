@@ -129,6 +129,55 @@ class PhpauthRequestsTableMap extends TableMap
     );
 
     /**
+     * Holds a list of column names and their normalized version.
+     *
+     * @var string[]
+     */
+    protected $normalizedColumnNameMap = [
+
+        'Id' => 'ID',
+        'PhpauthRequests.Id' => 'ID',
+        'id' => 'ID',
+        'phpauthRequests.id' => 'ID',
+        'PhpauthRequestsTableMap::COL_ID' => 'ID',
+        'COL_ID' => 'ID',
+        'id' => 'ID',
+        'phpauth_requests.id' => 'ID',
+        'Uid' => 'UID',
+        'PhpauthRequests.Uid' => 'UID',
+        'uid' => 'UID',
+        'phpauthRequests.uid' => 'UID',
+        'PhpauthRequestsTableMap::COL_UID' => 'UID',
+        'COL_UID' => 'UID',
+        'uid' => 'UID',
+        'phpauth_requests.uid' => 'UID',
+        'Token' => 'TOKEN',
+        'PhpauthRequests.Token' => 'TOKEN',
+        'token' => 'TOKEN',
+        'phpauthRequests.token' => 'TOKEN',
+        'PhpauthRequestsTableMap::COL_TOKEN' => 'TOKEN',
+        'COL_TOKEN' => 'TOKEN',
+        'token' => 'TOKEN',
+        'phpauth_requests.token' => 'TOKEN',
+        'Expire' => 'EXPIRE',
+        'PhpauthRequests.Expire' => 'EXPIRE',
+        'expire' => 'EXPIRE',
+        'phpauthRequests.expire' => 'EXPIRE',
+        'PhpauthRequestsTableMap::COL_EXPIRE' => 'EXPIRE',
+        'COL_EXPIRE' => 'EXPIRE',
+        'expire' => 'EXPIRE',
+        'phpauth_requests.expire' => 'EXPIRE',
+        'Type' => 'TYPE',
+        'PhpauthRequests.Type' => 'TYPE',
+        'type' => 'TYPE',
+        'phpauthRequests.type' => 'TYPE',
+        'PhpauthRequestsTableMap::COL_TYPE' => 'TYPE',
+        'COL_TYPE' => 'TYPE',
+        'type' => 'TYPE',
+        'phpauth_requests.type' => 'TYPE',
+    ];
+
+    /**
      * Initialize the table attributes and columns
      * Relations are not initialized by this method since they are lazy loaded
      *
@@ -311,6 +360,34 @@ class PhpauthRequestsTableMap extends TableMap
             $criteria->addSelectColumn($alias . '.token');
             $criteria->addSelectColumn($alias . '.expire');
             $criteria->addSelectColumn($alias . '.type');
+        }
+    }
+
+    /**
+     * Remove all the columns needed to create a new object.
+     *
+     * Note: any columns that were marked with lazyLoad="true" in the
+     * XML schema will not be removed as they are only loaded on demand.
+     *
+     * @param Criteria $criteria object containing the columns to remove.
+     * @param string   $alias    optional table alias
+     * @throws PropelException Any exceptions caught during processing will be
+     *                         rethrown wrapped into a PropelException.
+     */
+    public static function removeSelectColumns(Criteria $criteria, $alias = null)
+    {
+        if (null === $alias) {
+            $criteria->removeSelectColumn(PhpauthRequestsTableMap::COL_ID);
+            $criteria->removeSelectColumn(PhpauthRequestsTableMap::COL_UID);
+            $criteria->removeSelectColumn(PhpauthRequestsTableMap::COL_TOKEN);
+            $criteria->removeSelectColumn(PhpauthRequestsTableMap::COL_EXPIRE);
+            $criteria->removeSelectColumn(PhpauthRequestsTableMap::COL_TYPE);
+        } else {
+            $criteria->removeSelectColumn($alias . '.id');
+            $criteria->removeSelectColumn($alias . '.uid');
+            $criteria->removeSelectColumn($alias . '.token');
+            $criteria->removeSelectColumn($alias . '.expire');
+            $criteria->removeSelectColumn($alias . '.type');
         }
     }
 

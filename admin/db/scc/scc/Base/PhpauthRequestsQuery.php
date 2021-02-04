@@ -39,14 +39,14 @@ use scc\scc\Map\PhpauthRequestsTableMap;
  * @method     ChildPhpauthRequestsQuery rightJoinWith($relation) Adds a RIGHT JOIN clause and with to the query
  * @method     ChildPhpauthRequestsQuery innerJoinWith($relation) Adds a INNER JOIN clause and with to the query
  *
- * @method     ChildPhpauthRequests findOne(ConnectionInterface $con = null) Return the first ChildPhpauthRequests matching the query
+ * @method     ChildPhpauthRequests|null findOne(ConnectionInterface $con = null) Return the first ChildPhpauthRequests matching the query
  * @method     ChildPhpauthRequests findOneOrCreate(ConnectionInterface $con = null) Return the first ChildPhpauthRequests matching the query, or a new ChildPhpauthRequests object populated from the query conditions when no match is found
  *
- * @method     ChildPhpauthRequests findOneById(int $id) Return the first ChildPhpauthRequests filtered by the id column
- * @method     ChildPhpauthRequests findOneByUid(int $uid) Return the first ChildPhpauthRequests filtered by the uid column
- * @method     ChildPhpauthRequests findOneByToken(string $token) Return the first ChildPhpauthRequests filtered by the token column
- * @method     ChildPhpauthRequests findOneByExpire(string $expire) Return the first ChildPhpauthRequests filtered by the expire column
- * @method     ChildPhpauthRequests findOneByType(string $type) Return the first ChildPhpauthRequests filtered by the type column *
+ * @method     ChildPhpauthRequests|null findOneById(int $id) Return the first ChildPhpauthRequests filtered by the id column
+ * @method     ChildPhpauthRequests|null findOneByUid(int $uid) Return the first ChildPhpauthRequests filtered by the uid column
+ * @method     ChildPhpauthRequests|null findOneByToken(string $token) Return the first ChildPhpauthRequests filtered by the token column
+ * @method     ChildPhpauthRequests|null findOneByExpire(string $expire) Return the first ChildPhpauthRequests filtered by the expire column
+ * @method     ChildPhpauthRequests|null findOneByType(string $type) Return the first ChildPhpauthRequests filtered by the type column *
 
  * @method     ChildPhpauthRequests requirePk($key, ConnectionInterface $con = null) Return the ChildPhpauthRequests by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildPhpauthRequests requireOne(ConnectionInterface $con = null) Return the first ChildPhpauthRequests matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found

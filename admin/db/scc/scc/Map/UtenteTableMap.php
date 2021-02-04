@@ -58,7 +58,7 @@ class UtenteTableMap extends TableMap
     /**
      * The total number of columns
      */
-    const NUM_COLUMNS = 7;
+    const NUM_COLUMNS = 8;
 
     /**
      * The number of lazy-loaded columns
@@ -68,12 +68,17 @@ class UtenteTableMap extends TableMap
     /**
      * The number of columns to hydrate (NUM_COLUMNS - NUM_LAZY_LOAD_COLUMNS)
      */
-    const NUM_HYDRATE_COLUMNS = 7;
+    const NUM_HYDRATE_COLUMNS = 8;
 
     /**
      * the column name for the Username field
      */
     const COL_USERNAME = 'utente.Username';
+
+    /**
+     * the column name for the Email field
+     */
+    const COL_EMAIL = 'utente.Email';
 
     /**
      * the column name for the Nome field
@@ -117,11 +122,11 @@ class UtenteTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('Username', 'Nome', 'Cognome', 'Telefono', 'Grado', 'AnnoNascita', 'Pass', ),
-        self::TYPE_CAMELNAME     => array('username', 'nome', 'cognome', 'telefono', 'grado', 'annoNascita', 'pass', ),
-        self::TYPE_COLNAME       => array(UtenteTableMap::COL_USERNAME, UtenteTableMap::COL_NOME, UtenteTableMap::COL_COGNOME, UtenteTableMap::COL_TELEFONO, UtenteTableMap::COL_GRADO, UtenteTableMap::COL_ANNO_NASCITA, UtenteTableMap::COL_PASS, ),
-        self::TYPE_FIELDNAME     => array('Username', 'Nome', 'Cognome', 'Telefono', 'Grado', 'Anno_Nascita', 'Pass', ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, )
+        self::TYPE_PHPNAME       => array('Username', 'Email', 'Nome', 'Cognome', 'Telefono', 'Grado', 'AnnoNascita', 'Pass', ),
+        self::TYPE_CAMELNAME     => array('username', 'email', 'nome', 'cognome', 'telefono', 'grado', 'annoNascita', 'pass', ),
+        self::TYPE_COLNAME       => array(UtenteTableMap::COL_USERNAME, UtenteTableMap::COL_EMAIL, UtenteTableMap::COL_NOME, UtenteTableMap::COL_COGNOME, UtenteTableMap::COL_TELEFONO, UtenteTableMap::COL_GRADO, UtenteTableMap::COL_ANNO_NASCITA, UtenteTableMap::COL_PASS, ),
+        self::TYPE_FIELDNAME     => array('Username', 'Email', 'Nome', 'Cognome', 'Telefono', 'Grado', 'Anno_Nascita', 'Pass', ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, )
     );
 
     /**
@@ -131,12 +136,85 @@ class UtenteTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('Username' => 0, 'Nome' => 1, 'Cognome' => 2, 'Telefono' => 3, 'Grado' => 4, 'AnnoNascita' => 5, 'Pass' => 6, ),
-        self::TYPE_CAMELNAME     => array('username' => 0, 'nome' => 1, 'cognome' => 2, 'telefono' => 3, 'grado' => 4, 'annoNascita' => 5, 'pass' => 6, ),
-        self::TYPE_COLNAME       => array(UtenteTableMap::COL_USERNAME => 0, UtenteTableMap::COL_NOME => 1, UtenteTableMap::COL_COGNOME => 2, UtenteTableMap::COL_TELEFONO => 3, UtenteTableMap::COL_GRADO => 4, UtenteTableMap::COL_ANNO_NASCITA => 5, UtenteTableMap::COL_PASS => 6, ),
-        self::TYPE_FIELDNAME     => array('Username' => 0, 'Nome' => 1, 'Cognome' => 2, 'Telefono' => 3, 'Grado' => 4, 'Anno_Nascita' => 5, 'Pass' => 6, ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, )
+        self::TYPE_PHPNAME       => array('Username' => 0, 'Email' => 1, 'Nome' => 2, 'Cognome' => 3, 'Telefono' => 4, 'Grado' => 5, 'AnnoNascita' => 6, 'Pass' => 7, ),
+        self::TYPE_CAMELNAME     => array('username' => 0, 'email' => 1, 'nome' => 2, 'cognome' => 3, 'telefono' => 4, 'grado' => 5, 'annoNascita' => 6, 'pass' => 7, ),
+        self::TYPE_COLNAME       => array(UtenteTableMap::COL_USERNAME => 0, UtenteTableMap::COL_EMAIL => 1, UtenteTableMap::COL_NOME => 2, UtenteTableMap::COL_COGNOME => 3, UtenteTableMap::COL_TELEFONO => 4, UtenteTableMap::COL_GRADO => 5, UtenteTableMap::COL_ANNO_NASCITA => 6, UtenteTableMap::COL_PASS => 7, ),
+        self::TYPE_FIELDNAME     => array('Username' => 0, 'Email' => 1, 'Nome' => 2, 'Cognome' => 3, 'Telefono' => 4, 'Grado' => 5, 'Anno_Nascita' => 6, 'Pass' => 7, ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, )
     );
+
+    /**
+     * Holds a list of column names and their normalized version.
+     *
+     * @var string[]
+     */
+    protected $normalizedColumnNameMap = [
+
+        'Username' => 'USERNAME',
+        'Utente.Username' => 'USERNAME',
+        'username' => 'USERNAME',
+        'utente.username' => 'USERNAME',
+        'UtenteTableMap::COL_USERNAME' => 'USERNAME',
+        'COL_USERNAME' => 'USERNAME',
+        'Username' => 'USERNAME',
+        'utente.Username' => 'USERNAME',
+        'Email' => 'EMAIL',
+        'Utente.Email' => 'EMAIL',
+        'email' => 'EMAIL',
+        'utente.email' => 'EMAIL',
+        'UtenteTableMap::COL_EMAIL' => 'EMAIL',
+        'COL_EMAIL' => 'EMAIL',
+        'Email' => 'EMAIL',
+        'utente.Email' => 'EMAIL',
+        'Nome' => 'NOME',
+        'Utente.Nome' => 'NOME',
+        'nome' => 'NOME',
+        'utente.nome' => 'NOME',
+        'UtenteTableMap::COL_NOME' => 'NOME',
+        'COL_NOME' => 'NOME',
+        'Nome' => 'NOME',
+        'utente.Nome' => 'NOME',
+        'Cognome' => 'COGNOME',
+        'Utente.Cognome' => 'COGNOME',
+        'cognome' => 'COGNOME',
+        'utente.cognome' => 'COGNOME',
+        'UtenteTableMap::COL_COGNOME' => 'COGNOME',
+        'COL_COGNOME' => 'COGNOME',
+        'Cognome' => 'COGNOME',
+        'utente.Cognome' => 'COGNOME',
+        'Telefono' => 'TELEFONO',
+        'Utente.Telefono' => 'TELEFONO',
+        'telefono' => 'TELEFONO',
+        'utente.telefono' => 'TELEFONO',
+        'UtenteTableMap::COL_TELEFONO' => 'TELEFONO',
+        'COL_TELEFONO' => 'TELEFONO',
+        'Telefono' => 'TELEFONO',
+        'utente.Telefono' => 'TELEFONO',
+        'Grado' => 'GRADO',
+        'Utente.Grado' => 'GRADO',
+        'grado' => 'GRADO',
+        'utente.grado' => 'GRADO',
+        'UtenteTableMap::COL_GRADO' => 'GRADO',
+        'COL_GRADO' => 'GRADO',
+        'Grado' => 'GRADO',
+        'utente.Grado' => 'GRADO',
+        'AnnoNascita' => 'ANNO_NASCITA',
+        'Utente.AnnoNascita' => 'ANNO_NASCITA',
+        'annoNascita' => 'ANNO_NASCITA',
+        'utente.annoNascita' => 'ANNO_NASCITA',
+        'UtenteTableMap::COL_ANNO_NASCITA' => 'ANNO_NASCITA',
+        'COL_ANNO_NASCITA' => 'ANNO_NASCITA',
+        'Anno_Nascita' => 'ANNO_NASCITA',
+        'utente.Anno_Nascita' => 'ANNO_NASCITA',
+        'Pass' => 'PASS',
+        'Utente.Pass' => 'PASS',
+        'pass' => 'PASS',
+        'utente.pass' => 'PASS',
+        'UtenteTableMap::COL_PASS' => 'PASS',
+        'COL_PASS' => 'PASS',
+        'Pass' => 'PASS',
+        'utente.Pass' => 'PASS',
+    ];
 
     /**
      * Initialize the table attributes and columns
@@ -156,6 +234,7 @@ class UtenteTableMap extends TableMap
         $this->setUseIdGenerator(false);
         // columns
         $this->addPrimaryKey('Username', 'Username', 'VARCHAR', true, 50, null);
+        $this->addColumn('Email', 'Email', 'LONGVARCHAR', false, null, null);
         $this->addColumn('Nome', 'Nome', 'VARCHAR', true, 50, null);
         $this->addColumn('Cognome', 'Cognome', 'VARCHAR', true, 50, null);
         $this->addColumn('Telefono', 'Telefono', 'VARCHAR', false, 50, '0');
@@ -320,6 +399,7 @@ class UtenteTableMap extends TableMap
     {
         if (null === $alias) {
             $criteria->addSelectColumn(UtenteTableMap::COL_USERNAME);
+            $criteria->addSelectColumn(UtenteTableMap::COL_EMAIL);
             $criteria->addSelectColumn(UtenteTableMap::COL_NOME);
             $criteria->addSelectColumn(UtenteTableMap::COL_COGNOME);
             $criteria->addSelectColumn(UtenteTableMap::COL_TELEFONO);
@@ -328,12 +408,47 @@ class UtenteTableMap extends TableMap
             $criteria->addSelectColumn(UtenteTableMap::COL_PASS);
         } else {
             $criteria->addSelectColumn($alias . '.Username');
+            $criteria->addSelectColumn($alias . '.Email');
             $criteria->addSelectColumn($alias . '.Nome');
             $criteria->addSelectColumn($alias . '.Cognome');
             $criteria->addSelectColumn($alias . '.Telefono');
             $criteria->addSelectColumn($alias . '.Grado');
             $criteria->addSelectColumn($alias . '.Anno_Nascita');
             $criteria->addSelectColumn($alias . '.Pass');
+        }
+    }
+
+    /**
+     * Remove all the columns needed to create a new object.
+     *
+     * Note: any columns that were marked with lazyLoad="true" in the
+     * XML schema will not be removed as they are only loaded on demand.
+     *
+     * @param Criteria $criteria object containing the columns to remove.
+     * @param string   $alias    optional table alias
+     * @throws PropelException Any exceptions caught during processing will be
+     *                         rethrown wrapped into a PropelException.
+     */
+    public static function removeSelectColumns(Criteria $criteria, $alias = null)
+    {
+        if (null === $alias) {
+            $criteria->removeSelectColumn(UtenteTableMap::COL_USERNAME);
+            $criteria->removeSelectColumn(UtenteTableMap::COL_EMAIL);
+            $criteria->removeSelectColumn(UtenteTableMap::COL_NOME);
+            $criteria->removeSelectColumn(UtenteTableMap::COL_COGNOME);
+            $criteria->removeSelectColumn(UtenteTableMap::COL_TELEFONO);
+            $criteria->removeSelectColumn(UtenteTableMap::COL_GRADO);
+            $criteria->removeSelectColumn(UtenteTableMap::COL_ANNO_NASCITA);
+            $criteria->removeSelectColumn(UtenteTableMap::COL_PASS);
+        } else {
+            $criteria->removeSelectColumn($alias . '.Username');
+            $criteria->removeSelectColumn($alias . '.Email');
+            $criteria->removeSelectColumn($alias . '.Nome');
+            $criteria->removeSelectColumn($alias . '.Cognome');
+            $criteria->removeSelectColumn($alias . '.Telefono');
+            $criteria->removeSelectColumn($alias . '.Grado');
+            $criteria->removeSelectColumn($alias . '.Anno_Nascita');
+            $criteria->removeSelectColumn($alias . '.Pass');
         }
     }
 

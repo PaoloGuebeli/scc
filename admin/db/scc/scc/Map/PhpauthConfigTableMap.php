@@ -115,6 +115,31 @@ class PhpauthConfigTableMap extends TableMap
     );
 
     /**
+     * Holds a list of column names and their normalized version.
+     *
+     * @var string[]
+     */
+    protected $normalizedColumnNameMap = [
+
+        'Setting' => 'SETTING',
+        'PhpauthConfig.Setting' => 'SETTING',
+        'setting' => 'SETTING',
+        'phpauthConfig.setting' => 'SETTING',
+        'PhpauthConfigTableMap::COL_SETTING' => 'SETTING',
+        'COL_SETTING' => 'SETTING',
+        'setting' => 'SETTING',
+        'phpauth_config.setting' => 'SETTING',
+        'Value' => 'VALUE',
+        'PhpauthConfig.Value' => 'VALUE',
+        'value' => 'VALUE',
+        'phpauthConfig.value' => 'VALUE',
+        'PhpauthConfigTableMap::COL_VALUE' => 'VALUE',
+        'COL_VALUE' => 'VALUE',
+        'value' => 'VALUE',
+        'phpauth_config.value' => 'VALUE',
+    ];
+
+    /**
      * Initialize the table attributes and columns
      * Relations are not initialized by this method since they are lazy loaded
      *
@@ -279,6 +304,28 @@ class PhpauthConfigTableMap extends TableMap
         } else {
             $criteria->addSelectColumn($alias . '.setting');
             $criteria->addSelectColumn($alias . '.value');
+        }
+    }
+
+    /**
+     * Remove all the columns needed to create a new object.
+     *
+     * Note: any columns that were marked with lazyLoad="true" in the
+     * XML schema will not be removed as they are only loaded on demand.
+     *
+     * @param Criteria $criteria object containing the columns to remove.
+     * @param string   $alias    optional table alias
+     * @throws PropelException Any exceptions caught during processing will be
+     *                         rethrown wrapped into a PropelException.
+     */
+    public static function removeSelectColumns(Criteria $criteria, $alias = null)
+    {
+        if (null === $alias) {
+            $criteria->removeSelectColumn(PhpauthConfigTableMap::COL_SETTING);
+            $criteria->removeSelectColumn(PhpauthConfigTableMap::COL_VALUE);
+        } else {
+            $criteria->removeSelectColumn($alias . '.setting');
+            $criteria->removeSelectColumn($alias . '.value');
         }
     }
 

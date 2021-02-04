@@ -167,6 +167,11 @@ CREATE TABLE `phpauth_users`
 (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `email` VARCHAR(100),
+    `Nome` VARCHAR(60) NOT NULL,
+    `Cognome` VARCHAR(60) NOT NULL,
+    `Phone` VARCHAR(60) NOT NULL,
+    `Level` INTEGER DEFAULT 3 NOT NULL,
+    `Bithyear` INTEGER NOT NULL,
     `password` VARCHAR(255),
     `isactive` TINYINT(1) DEFAULT 0 NOT NULL,
     `dt` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -183,13 +188,15 @@ DROP TABLE IF EXISTS `utente`;
 CREATE TABLE `utente`
 (
     `Username` VARCHAR(50) NOT NULL,
+    `Email` TEXT,
     `Nome` VARCHAR(50) NOT NULL,
     `Cognome` VARCHAR(50) NOT NULL,
     `Telefono` VARCHAR(50) DEFAULT '0',
     `Grado` INTEGER DEFAULT 0 NOT NULL,
     `Anno_Nascita` INTEGER NOT NULL,
     `Pass` VARCHAR(500),
-    PRIMARY KEY (`Username`)
+    PRIMARY KEY (`Username`),
+    UNIQUE INDEX `Email` (`Email`)
 ) ENGINE=InnoDB;
 
 # This restores the fkey checks, after having unset them earlier

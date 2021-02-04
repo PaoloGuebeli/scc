@@ -35,12 +35,12 @@ use scc\scc\Map\PhpauthAttemptsTableMap;
  * @method     ChildPhpauthAttemptsQuery rightJoinWith($relation) Adds a RIGHT JOIN clause and with to the query
  * @method     ChildPhpauthAttemptsQuery innerJoinWith($relation) Adds a INNER JOIN clause and with to the query
  *
- * @method     ChildPhpauthAttempts findOne(ConnectionInterface $con = null) Return the first ChildPhpauthAttempts matching the query
+ * @method     ChildPhpauthAttempts|null findOne(ConnectionInterface $con = null) Return the first ChildPhpauthAttempts matching the query
  * @method     ChildPhpauthAttempts findOneOrCreate(ConnectionInterface $con = null) Return the first ChildPhpauthAttempts matching the query, or a new ChildPhpauthAttempts object populated from the query conditions when no match is found
  *
- * @method     ChildPhpauthAttempts findOneById(int $id) Return the first ChildPhpauthAttempts filtered by the id column
- * @method     ChildPhpauthAttempts findOneByIp(string $ip) Return the first ChildPhpauthAttempts filtered by the ip column
- * @method     ChildPhpauthAttempts findOneByExpiredate(string $expiredate) Return the first ChildPhpauthAttempts filtered by the expiredate column *
+ * @method     ChildPhpauthAttempts|null findOneById(int $id) Return the first ChildPhpauthAttempts filtered by the id column
+ * @method     ChildPhpauthAttempts|null findOneByIp(string $ip) Return the first ChildPhpauthAttempts filtered by the ip column
+ * @method     ChildPhpauthAttempts|null findOneByExpiredate(string $expiredate) Return the first ChildPhpauthAttempts filtered by the expiredate column *
 
  * @method     ChildPhpauthAttempts requirePk($key, ConnectionInterface $con = null) Return the ChildPhpauthAttempts by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildPhpauthAttempts requireOne(ConnectionInterface $con = null) Return the first ChildPhpauthAttempts matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found

@@ -21,6 +21,7 @@ use scc\scc\Map\UtenteTableMap;
  *
  *
  * @method     ChildUtenteQuery orderByUsername($order = Criteria::ASC) Order by the Username column
+ * @method     ChildUtenteQuery orderByEmail($order = Criteria::ASC) Order by the Email column
  * @method     ChildUtenteQuery orderByNome($order = Criteria::ASC) Order by the Nome column
  * @method     ChildUtenteQuery orderByCognome($order = Criteria::ASC) Order by the Cognome column
  * @method     ChildUtenteQuery orderByTelefono($order = Criteria::ASC) Order by the Telefono column
@@ -29,6 +30,7 @@ use scc\scc\Map\UtenteTableMap;
  * @method     ChildUtenteQuery orderByPass($order = Criteria::ASC) Order by the Pass column
  *
  * @method     ChildUtenteQuery groupByUsername() Group by the Username column
+ * @method     ChildUtenteQuery groupByEmail() Group by the Email column
  * @method     ChildUtenteQuery groupByNome() Group by the Nome column
  * @method     ChildUtenteQuery groupByCognome() Group by the Cognome column
  * @method     ChildUtenteQuery groupByTelefono() Group by the Telefono column
@@ -56,21 +58,23 @@ use scc\scc\Map\UtenteTableMap;
  *
  * @method     \scc\scc\PartecipaQuery endUse() Finalizes a secondary criteria and merges it with its primary Criteria
  *
- * @method     ChildUtente findOne(ConnectionInterface $con = null) Return the first ChildUtente matching the query
+ * @method     ChildUtente|null findOne(ConnectionInterface $con = null) Return the first ChildUtente matching the query
  * @method     ChildUtente findOneOrCreate(ConnectionInterface $con = null) Return the first ChildUtente matching the query, or a new ChildUtente object populated from the query conditions when no match is found
  *
- * @method     ChildUtente findOneByUsername(string $Username) Return the first ChildUtente filtered by the Username column
- * @method     ChildUtente findOneByNome(string $Nome) Return the first ChildUtente filtered by the Nome column
- * @method     ChildUtente findOneByCognome(string $Cognome) Return the first ChildUtente filtered by the Cognome column
- * @method     ChildUtente findOneByTelefono(string $Telefono) Return the first ChildUtente filtered by the Telefono column
- * @method     ChildUtente findOneByGrado(int $Grado) Return the first ChildUtente filtered by the Grado column
- * @method     ChildUtente findOneByAnnoNascita(int $Anno_Nascita) Return the first ChildUtente filtered by the Anno_Nascita column
- * @method     ChildUtente findOneByPass(string $Pass) Return the first ChildUtente filtered by the Pass column *
+ * @method     ChildUtente|null findOneByUsername(string $Username) Return the first ChildUtente filtered by the Username column
+ * @method     ChildUtente|null findOneByEmail(string $Email) Return the first ChildUtente filtered by the Email column
+ * @method     ChildUtente|null findOneByNome(string $Nome) Return the first ChildUtente filtered by the Nome column
+ * @method     ChildUtente|null findOneByCognome(string $Cognome) Return the first ChildUtente filtered by the Cognome column
+ * @method     ChildUtente|null findOneByTelefono(string $Telefono) Return the first ChildUtente filtered by the Telefono column
+ * @method     ChildUtente|null findOneByGrado(int $Grado) Return the first ChildUtente filtered by the Grado column
+ * @method     ChildUtente|null findOneByAnnoNascita(int $Anno_Nascita) Return the first ChildUtente filtered by the Anno_Nascita column
+ * @method     ChildUtente|null findOneByPass(string $Pass) Return the first ChildUtente filtered by the Pass column *
 
  * @method     ChildUtente requirePk($key, ConnectionInterface $con = null) Return the ChildUtente by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildUtente requireOne(ConnectionInterface $con = null) Return the first ChildUtente matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildUtente requireOneByUsername(string $Username) Return the first ChildUtente filtered by the Username column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildUtente requireOneByEmail(string $Email) Return the first ChildUtente filtered by the Email column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildUtente requireOneByNome(string $Nome) Return the first ChildUtente filtered by the Nome column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildUtente requireOneByCognome(string $Cognome) Return the first ChildUtente filtered by the Cognome column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildUtente requireOneByTelefono(string $Telefono) Return the first ChildUtente filtered by the Telefono column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
@@ -80,6 +84,7 @@ use scc\scc\Map\UtenteTableMap;
  *
  * @method     ChildUtente[]|ObjectCollection find(ConnectionInterface $con = null) Return ChildUtente objects based on current ModelCriteria
  * @method     ChildUtente[]|ObjectCollection findByUsername(string $Username) Return ChildUtente objects filtered by the Username column
+ * @method     ChildUtente[]|ObjectCollection findByEmail(string $Email) Return ChildUtente objects filtered by the Email column
  * @method     ChildUtente[]|ObjectCollection findByNome(string $Nome) Return ChildUtente objects filtered by the Nome column
  * @method     ChildUtente[]|ObjectCollection findByCognome(string $Cognome) Return ChildUtente objects filtered by the Cognome column
  * @method     ChildUtente[]|ObjectCollection findByTelefono(string $Telefono) Return ChildUtente objects filtered by the Telefono column
@@ -184,7 +189,7 @@ abstract class UtenteQuery extends ModelCriteria
      */
     protected function findPkSimple($key, ConnectionInterface $con)
     {
-        $sql = 'SELECT Username, Nome, Cognome, Telefono, Grado, Anno_Nascita, Pass FROM utente WHERE Username = :p0';
+        $sql = 'SELECT Username, Email, Nome, Cognome, Telefono, Grado, Anno_Nascita, Pass FROM utente WHERE Username = :p0';
         try {
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':p0', $key, PDO::PARAM_STR);
@@ -297,6 +302,31 @@ abstract class UtenteQuery extends ModelCriteria
         }
 
         return $this->addUsingAlias(UtenteTableMap::COL_USERNAME, $username, $comparison);
+    }
+
+    /**
+     * Filter the query on the Email column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByEmail('fooValue');   // WHERE Email = 'fooValue'
+     * $query->filterByEmail('%fooValue%', Criteria::LIKE); // WHERE Email LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $email The value to use as filter.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildUtenteQuery The current query, for fluid interface
+     */
+    public function filterByEmail($email = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($email)) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(UtenteTableMap::COL_EMAIL, $email, $comparison);
     }
 
     /**

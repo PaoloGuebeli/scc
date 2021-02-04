@@ -50,13 +50,13 @@ use scc\scc\Map\EventoTableMap;
  *
  * @method     \scc\scc\PartecipaQuery endUse() Finalizes a secondary criteria and merges it with its primary Criteria
  *
- * @method     ChildEvento findOne(ConnectionInterface $con = null) Return the first ChildEvento matching the query
+ * @method     ChildEvento|null findOne(ConnectionInterface $con = null) Return the first ChildEvento matching the query
  * @method     ChildEvento findOneOrCreate(ConnectionInterface $con = null) Return the first ChildEvento matching the query, or a new ChildEvento object populated from the query conditions when no match is found
  *
- * @method     ChildEvento findOneById(int $id) Return the first ChildEvento filtered by the id column
- * @method     ChildEvento findOneByNome(string $nome) Return the first ChildEvento filtered by the nome column
- * @method     ChildEvento findOneByDescr(string $descr) Return the first ChildEvento filtered by the descr column
- * @method     ChildEvento findOneByDataInizio(string $data_inizio) Return the first ChildEvento filtered by the data_inizio column *
+ * @method     ChildEvento|null findOneById(int $id) Return the first ChildEvento filtered by the id column
+ * @method     ChildEvento|null findOneByNome(string $nome) Return the first ChildEvento filtered by the nome column
+ * @method     ChildEvento|null findOneByDescr(string $descr) Return the first ChildEvento filtered by the descr column
+ * @method     ChildEvento|null findOneByDataInizio(string $data_inizio) Return the first ChildEvento filtered by the data_inizio column *
 
  * @method     ChildEvento requirePk($key, ConnectionInterface $con = null) Return the ChildEvento by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildEvento requireOne(ConnectionInterface $con = null) Return the first ChildEvento matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found

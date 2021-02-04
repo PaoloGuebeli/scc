@@ -21,12 +21,22 @@ use scc\scc\Map\PhpauthUsersTableMap;
  *
  * @method     ChildPhpauthUsersQuery orderById($order = Criteria::ASC) Order by the id column
  * @method     ChildPhpauthUsersQuery orderByEmail($order = Criteria::ASC) Order by the email column
+ * @method     ChildPhpauthUsersQuery orderByNome($order = Criteria::ASC) Order by the Nome column
+ * @method     ChildPhpauthUsersQuery orderByCognome($order = Criteria::ASC) Order by the Cognome column
+ * @method     ChildPhpauthUsersQuery orderByPhone($order = Criteria::ASC) Order by the Phone column
+ * @method     ChildPhpauthUsersQuery orderByLevel($order = Criteria::ASC) Order by the Level column
+ * @method     ChildPhpauthUsersQuery orderByBithyear($order = Criteria::ASC) Order by the Bithyear column
  * @method     ChildPhpauthUsersQuery orderByPassword($order = Criteria::ASC) Order by the password column
  * @method     ChildPhpauthUsersQuery orderByIsactive($order = Criteria::ASC) Order by the isactive column
  * @method     ChildPhpauthUsersQuery orderByDt($order = Criteria::ASC) Order by the dt column
  *
  * @method     ChildPhpauthUsersQuery groupById() Group by the id column
  * @method     ChildPhpauthUsersQuery groupByEmail() Group by the email column
+ * @method     ChildPhpauthUsersQuery groupByNome() Group by the Nome column
+ * @method     ChildPhpauthUsersQuery groupByCognome() Group by the Cognome column
+ * @method     ChildPhpauthUsersQuery groupByPhone() Group by the Phone column
+ * @method     ChildPhpauthUsersQuery groupByLevel() Group by the Level column
+ * @method     ChildPhpauthUsersQuery groupByBithyear() Group by the Bithyear column
  * @method     ChildPhpauthUsersQuery groupByPassword() Group by the password column
  * @method     ChildPhpauthUsersQuery groupByIsactive() Group by the isactive column
  * @method     ChildPhpauthUsersQuery groupByDt() Group by the dt column
@@ -39,20 +49,30 @@ use scc\scc\Map\PhpauthUsersTableMap;
  * @method     ChildPhpauthUsersQuery rightJoinWith($relation) Adds a RIGHT JOIN clause and with to the query
  * @method     ChildPhpauthUsersQuery innerJoinWith($relation) Adds a INNER JOIN clause and with to the query
  *
- * @method     ChildPhpauthUsers findOne(ConnectionInterface $con = null) Return the first ChildPhpauthUsers matching the query
+ * @method     ChildPhpauthUsers|null findOne(ConnectionInterface $con = null) Return the first ChildPhpauthUsers matching the query
  * @method     ChildPhpauthUsers findOneOrCreate(ConnectionInterface $con = null) Return the first ChildPhpauthUsers matching the query, or a new ChildPhpauthUsers object populated from the query conditions when no match is found
  *
- * @method     ChildPhpauthUsers findOneById(int $id) Return the first ChildPhpauthUsers filtered by the id column
- * @method     ChildPhpauthUsers findOneByEmail(string $email) Return the first ChildPhpauthUsers filtered by the email column
- * @method     ChildPhpauthUsers findOneByPassword(string $password) Return the first ChildPhpauthUsers filtered by the password column
- * @method     ChildPhpauthUsers findOneByIsactive(boolean $isactive) Return the first ChildPhpauthUsers filtered by the isactive column
- * @method     ChildPhpauthUsers findOneByDt(string $dt) Return the first ChildPhpauthUsers filtered by the dt column *
+ * @method     ChildPhpauthUsers|null findOneById(int $id) Return the first ChildPhpauthUsers filtered by the id column
+ * @method     ChildPhpauthUsers|null findOneByEmail(string $email) Return the first ChildPhpauthUsers filtered by the email column
+ * @method     ChildPhpauthUsers|null findOneByNome(string $Nome) Return the first ChildPhpauthUsers filtered by the Nome column
+ * @method     ChildPhpauthUsers|null findOneByCognome(string $Cognome) Return the first ChildPhpauthUsers filtered by the Cognome column
+ * @method     ChildPhpauthUsers|null findOneByPhone(string $Phone) Return the first ChildPhpauthUsers filtered by the Phone column
+ * @method     ChildPhpauthUsers|null findOneByLevel(int $Level) Return the first ChildPhpauthUsers filtered by the Level column
+ * @method     ChildPhpauthUsers|null findOneByBithyear(int $Bithyear) Return the first ChildPhpauthUsers filtered by the Bithyear column
+ * @method     ChildPhpauthUsers|null findOneByPassword(string $password) Return the first ChildPhpauthUsers filtered by the password column
+ * @method     ChildPhpauthUsers|null findOneByIsactive(boolean $isactive) Return the first ChildPhpauthUsers filtered by the isactive column
+ * @method     ChildPhpauthUsers|null findOneByDt(string $dt) Return the first ChildPhpauthUsers filtered by the dt column *
 
  * @method     ChildPhpauthUsers requirePk($key, ConnectionInterface $con = null) Return the ChildPhpauthUsers by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildPhpauthUsers requireOne(ConnectionInterface $con = null) Return the first ChildPhpauthUsers matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildPhpauthUsers requireOneById(int $id) Return the first ChildPhpauthUsers filtered by the id column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildPhpauthUsers requireOneByEmail(string $email) Return the first ChildPhpauthUsers filtered by the email column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildPhpauthUsers requireOneByNome(string $Nome) Return the first ChildPhpauthUsers filtered by the Nome column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildPhpauthUsers requireOneByCognome(string $Cognome) Return the first ChildPhpauthUsers filtered by the Cognome column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildPhpauthUsers requireOneByPhone(string $Phone) Return the first ChildPhpauthUsers filtered by the Phone column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildPhpauthUsers requireOneByLevel(int $Level) Return the first ChildPhpauthUsers filtered by the Level column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildPhpauthUsers requireOneByBithyear(int $Bithyear) Return the first ChildPhpauthUsers filtered by the Bithyear column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildPhpauthUsers requireOneByPassword(string $password) Return the first ChildPhpauthUsers filtered by the password column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildPhpauthUsers requireOneByIsactive(boolean $isactive) Return the first ChildPhpauthUsers filtered by the isactive column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildPhpauthUsers requireOneByDt(string $dt) Return the first ChildPhpauthUsers filtered by the dt column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
@@ -60,6 +80,11 @@ use scc\scc\Map\PhpauthUsersTableMap;
  * @method     ChildPhpauthUsers[]|ObjectCollection find(ConnectionInterface $con = null) Return ChildPhpauthUsers objects based on current ModelCriteria
  * @method     ChildPhpauthUsers[]|ObjectCollection findById(int $id) Return ChildPhpauthUsers objects filtered by the id column
  * @method     ChildPhpauthUsers[]|ObjectCollection findByEmail(string $email) Return ChildPhpauthUsers objects filtered by the email column
+ * @method     ChildPhpauthUsers[]|ObjectCollection findByNome(string $Nome) Return ChildPhpauthUsers objects filtered by the Nome column
+ * @method     ChildPhpauthUsers[]|ObjectCollection findByCognome(string $Cognome) Return ChildPhpauthUsers objects filtered by the Cognome column
+ * @method     ChildPhpauthUsers[]|ObjectCollection findByPhone(string $Phone) Return ChildPhpauthUsers objects filtered by the Phone column
+ * @method     ChildPhpauthUsers[]|ObjectCollection findByLevel(int $Level) Return ChildPhpauthUsers objects filtered by the Level column
+ * @method     ChildPhpauthUsers[]|ObjectCollection findByBithyear(int $Bithyear) Return ChildPhpauthUsers objects filtered by the Bithyear column
  * @method     ChildPhpauthUsers[]|ObjectCollection findByPassword(string $password) Return ChildPhpauthUsers objects filtered by the password column
  * @method     ChildPhpauthUsers[]|ObjectCollection findByIsactive(boolean $isactive) Return ChildPhpauthUsers objects filtered by the isactive column
  * @method     ChildPhpauthUsers[]|ObjectCollection findByDt(string $dt) Return ChildPhpauthUsers objects filtered by the dt column
@@ -161,7 +186,7 @@ abstract class PhpauthUsersQuery extends ModelCriteria
      */
     protected function findPkSimple($key, ConnectionInterface $con)
     {
-        $sql = 'SELECT id, email, password, isactive, dt FROM phpauth_users WHERE id = :p0';
+        $sql = 'SELECT id, email, Nome, Cognome, Phone, Level, Bithyear, password, isactive, dt FROM phpauth_users WHERE id = :p0';
         try {
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':p0', $key, PDO::PARAM_INT);
@@ -315,6 +340,163 @@ abstract class PhpauthUsersQuery extends ModelCriteria
         }
 
         return $this->addUsingAlias(PhpauthUsersTableMap::COL_EMAIL, $email, $comparison);
+    }
+
+    /**
+     * Filter the query on the Nome column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByNome('fooValue');   // WHERE Nome = 'fooValue'
+     * $query->filterByNome('%fooValue%', Criteria::LIKE); // WHERE Nome LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $nome The value to use as filter.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildPhpauthUsersQuery The current query, for fluid interface
+     */
+    public function filterByNome($nome = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($nome)) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(PhpauthUsersTableMap::COL_NOME, $nome, $comparison);
+    }
+
+    /**
+     * Filter the query on the Cognome column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByCognome('fooValue');   // WHERE Cognome = 'fooValue'
+     * $query->filterByCognome('%fooValue%', Criteria::LIKE); // WHERE Cognome LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $cognome The value to use as filter.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildPhpauthUsersQuery The current query, for fluid interface
+     */
+    public function filterByCognome($cognome = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($cognome)) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(PhpauthUsersTableMap::COL_COGNOME, $cognome, $comparison);
+    }
+
+    /**
+     * Filter the query on the Phone column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByPhone('fooValue');   // WHERE Phone = 'fooValue'
+     * $query->filterByPhone('%fooValue%', Criteria::LIKE); // WHERE Phone LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $phone The value to use as filter.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildPhpauthUsersQuery The current query, for fluid interface
+     */
+    public function filterByPhone($phone = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($phone)) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(PhpauthUsersTableMap::COL_PHONE, $phone, $comparison);
+    }
+
+    /**
+     * Filter the query on the Level column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByLevel(1234); // WHERE Level = 1234
+     * $query->filterByLevel(array(12, 34)); // WHERE Level IN (12, 34)
+     * $query->filterByLevel(array('min' => 12)); // WHERE Level > 12
+     * </code>
+     *
+     * @param     mixed $level The value to use as filter.
+     *              Use scalar values for equality.
+     *              Use array values for in_array() equivalent.
+     *              Use associative array('min' => $minValue, 'max' => $maxValue) for intervals.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildPhpauthUsersQuery The current query, for fluid interface
+     */
+    public function filterByLevel($level = null, $comparison = null)
+    {
+        if (is_array($level)) {
+            $useMinMax = false;
+            if (isset($level['min'])) {
+                $this->addUsingAlias(PhpauthUsersTableMap::COL_LEVEL, $level['min'], Criteria::GREATER_EQUAL);
+                $useMinMax = true;
+            }
+            if (isset($level['max'])) {
+                $this->addUsingAlias(PhpauthUsersTableMap::COL_LEVEL, $level['max'], Criteria::LESS_EQUAL);
+                $useMinMax = true;
+            }
+            if ($useMinMax) {
+                return $this;
+            }
+            if (null === $comparison) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(PhpauthUsersTableMap::COL_LEVEL, $level, $comparison);
+    }
+
+    /**
+     * Filter the query on the Bithyear column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByBithyear(1234); // WHERE Bithyear = 1234
+     * $query->filterByBithyear(array(12, 34)); // WHERE Bithyear IN (12, 34)
+     * $query->filterByBithyear(array('min' => 12)); // WHERE Bithyear > 12
+     * </code>
+     *
+     * @param     mixed $bithyear The value to use as filter.
+     *              Use scalar values for equality.
+     *              Use array values for in_array() equivalent.
+     *              Use associative array('min' => $minValue, 'max' => $maxValue) for intervals.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildPhpauthUsersQuery The current query, for fluid interface
+     */
+    public function filterByBithyear($bithyear = null, $comparison = null)
+    {
+        if (is_array($bithyear)) {
+            $useMinMax = false;
+            if (isset($bithyear['min'])) {
+                $this->addUsingAlias(PhpauthUsersTableMap::COL_BITHYEAR, $bithyear['min'], Criteria::GREATER_EQUAL);
+                $useMinMax = true;
+            }
+            if (isset($bithyear['max'])) {
+                $this->addUsingAlias(PhpauthUsersTableMap::COL_BITHYEAR, $bithyear['max'], Criteria::LESS_EQUAL);
+                $useMinMax = true;
+            }
+            if ($useMinMax) {
+                return $this;
+            }
+            if (null === $comparison) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(PhpauthUsersTableMap::COL_BITHYEAR, $bithyear, $comparison);
     }
 
     /**

@@ -26,10 +26,12 @@ INSERT INTO phpauth_config (setting, value) VALUES
 ('mail_charset','UTF-8'),
 ('password_min_score',  '3'),
 ('site_activation_page',  'activate'),
+('site_activation_page_append_code', '0'),
 ('site_email',  'no-reply@phpauth.cuonic.com'),
 ('site_key',  'fghuior.)/!/jdUkd8s2!7HVHG7777ghg'),
 ('site_name', 'PHPAuth'),
 ('site_password_reset_page',  'reset'),
+('site_password_reset_page_append_code', '0'),
 ('site_timezone', 'Europe/Paris'),
 ('site_url',  'https://github.com/PHPAuth/PHPAuth'),
 ('site_language', 'en_GB'),
@@ -55,7 +57,8 @@ INSERT INTO phpauth_config (setting, value) VALUES
 ('translation_source', 'php'),
 ('recaptcha_enabled', 0),
 ('recaptcha_site_key', ''),
-('recaptcha_secret_key', '');
+('recaptcha_secret_key', ''),
+('custom_datetime_format', 'Y-m-d H:i');
 
 DROP TABLE IF EXISTS phpauth_attempts;
 CREATE TABLE phpauth_attempts (
@@ -82,6 +85,7 @@ CREATE TABLE phpauth_sessions (
   hash character varying(40) NOT NULL,
   expiredate datetime2 NOT NULL,
   ip character varying(39) NOT NULL,
+  device_id character varying(36) DEFAULT NULL,
   agent character varying(200) NOT NULL,
   cookie_crc character (40) NOT NULL,
   PRIMARY KEY (id)

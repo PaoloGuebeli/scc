@@ -33,11 +33,11 @@ use scc\scc\Map\PhpauthEmailsBannedTableMap;
  * @method     ChildPhpauthEmailsBannedQuery rightJoinWith($relation) Adds a RIGHT JOIN clause and with to the query
  * @method     ChildPhpauthEmailsBannedQuery innerJoinWith($relation) Adds a INNER JOIN clause and with to the query
  *
- * @method     ChildPhpauthEmailsBanned findOne(ConnectionInterface $con = null) Return the first ChildPhpauthEmailsBanned matching the query
+ * @method     ChildPhpauthEmailsBanned|null findOne(ConnectionInterface $con = null) Return the first ChildPhpauthEmailsBanned matching the query
  * @method     ChildPhpauthEmailsBanned findOneOrCreate(ConnectionInterface $con = null) Return the first ChildPhpauthEmailsBanned matching the query, or a new ChildPhpauthEmailsBanned object populated from the query conditions when no match is found
  *
- * @method     ChildPhpauthEmailsBanned findOneById(int $id) Return the first ChildPhpauthEmailsBanned filtered by the id column
- * @method     ChildPhpauthEmailsBanned findOneByDomain(string $domain) Return the first ChildPhpauthEmailsBanned filtered by the domain column *
+ * @method     ChildPhpauthEmailsBanned|null findOneById(int $id) Return the first ChildPhpauthEmailsBanned filtered by the id column
+ * @method     ChildPhpauthEmailsBanned|null findOneByDomain(string $domain) Return the first ChildPhpauthEmailsBanned filtered by the domain column *
 
  * @method     ChildPhpauthEmailsBanned requirePk($key, ConnectionInterface $con = null) Return the ChildPhpauthEmailsBanned by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildPhpauthEmailsBanned requireOne(ConnectionInterface $con = null) Return the first ChildPhpauthEmailsBanned matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
