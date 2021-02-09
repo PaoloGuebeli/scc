@@ -1,13 +1,10 @@
 <?php
 
-
-use db\scc\scc\PhpauthUsersQuery;
-
 require_once 'vendor/autoload.php';
 	require_once 'db/generated-conf/config.php';
 	require_once 'model/DbManager.php';
 
-//if(isset($_COOKIE['authIDD'])) {
+if(isset($_COOKIE['authIDD'])) {
 	class Users
 	{
 
@@ -32,11 +29,13 @@ require_once 'vendor/autoload.php';
 		private $uq;
 
 		public function __construct()
-		{
-			$this->dbh = DbManager::getDb();
-			$this->config = new PHPAuth\Config($this->dbh, null, null, "it_IT");
-			$this->auth = new PHPAuth\Auth($this->dbh, $this->config);
-			$this->uq = new PhpauthUsersQuery();
+        {
+            $this->dbh = DbManager::getDb();
+            $this->config = new PHPAuth\Config($this->dbh, '', '', "it_IT");
+            $this->auth = new PHPAuth\Auth($this->dbh, $this->config);
+            //if ($this->auth->isLogged()){
+                $this->uq = new \scc\scc\PhpauthUsersQuery();
+            //}
 		}
 
 		function index()
@@ -47,29 +46,29 @@ require_once 'vendor/autoload.php';
 
 		}
 
-		function getUtenti()
+		function getUsers()
 		{
 
-			$uq = $this->uq->find();
-			echo json_encode($uq->toArray());
+			$uq = $this->uq->find()->toArray();
+			echo json_encode($uq);
 
 		}
 
-		function updateUtente()
+		function updateUser()
 		{
-			if (isset($_POST['id']) && isset($_POST['nome']) && isset($_POST['cognome']) && isset($_POST['telefono']) && isset($_POST['ruolo'])) {
+			if (isset($_POST['id']) && isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['phone']) && isset($_POST['level'])) {
 
 				$id = htmlspecialchars($_POST['id']);
-				$nome = htmlspecialchars($_POST['nome']);
-				$cognome = htmlspecialchars($_POST['cognome']);
-				$telefono = htmlspecialchars($_POST['telefono']);
-				$ruolo = $_POST['ruolo'];
+				$name = htmlspecialchars($_POST['name']);
+				$surname = htmlspecialchars($_POST['surname']);
+				$phone = htmlspecialchars($_POST['phone']);
+				$level = $_POST['level'];
 
 				$values = [
-					'Nome' => $nome,
-					'Cognome' => $cognome,
-					'Telefono' => $telefono,
-					'Ruolo' => $ruolo,
+					'Name' => $name,
+					'Surname' => $surname,
+					'Phone' => $phone,
+					'Level' => $level,
 				];
 
 				try {
@@ -164,11 +163,9 @@ require_once 'vendor/autoload.php';
 			}
 		}
 	}
-/**
- * }else{
-	require_once ('controllers/Login.php');
+}else {
+    require_once('controller/Login.php');
 
-	$login = new Login();
-	$login->index();
+    $login = new Login();
+    $login->index();
 }
- */

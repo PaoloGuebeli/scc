@@ -23,7 +23,7 @@ class Home
          * Istanza del databse per permettere a phpAuth di connettersi.
          */
         $this->dbh = DbManager::getDb();
-        $this->config = new PHPAuth\Config($this->dbh, null, null, "it_IT");
+        $this->config = new PHPAuth\Config($this->dbh, '', '', "it_IT");
         $this->auth = new PHPAuth\Auth($this->dbh, $this->config);
     }
 

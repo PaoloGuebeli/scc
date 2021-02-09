@@ -81,29 +81,29 @@ class PhpauthUsersTableMap extends TableMap
     const COL_EMAIL = 'phpauth_users.email';
 
     /**
-     * the column name for the Nome field
+     * the column name for the name field
      */
-    const COL_NOME = 'phpauth_users.Nome';
+    const COL_NAME = 'phpauth_users.name';
 
     /**
-     * the column name for the Cognome field
+     * the column name for the surname field
      */
-    const COL_COGNOME = 'phpauth_users.Cognome';
+    const COL_SURNAME = 'phpauth_users.surname';
 
     /**
-     * the column name for the Phone field
+     * the column name for the phone field
      */
-    const COL_PHONE = 'phpauth_users.Phone';
+    const COL_PHONE = 'phpauth_users.phone';
 
     /**
-     * the column name for the Level field
+     * the column name for the level field
      */
-    const COL_LEVEL = 'phpauth_users.Level';
+    const COL_LEVEL = 'phpauth_users.level';
 
     /**
-     * the column name for the Bithyear field
+     * the column name for the birthyear field
      */
-    const COL_BITHYEAR = 'phpauth_users.Bithyear';
+    const COL_BIRTHYEAR = 'phpauth_users.birthyear';
 
     /**
      * the column name for the password field
@@ -132,10 +132,10 @@ class PhpauthUsersTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('Id', 'Email', 'Nome', 'Cognome', 'Phone', 'Level', 'Bithyear', 'Password', 'Isactive', 'Dt', ),
-        self::TYPE_CAMELNAME     => array('id', 'email', 'nome', 'cognome', 'phone', 'level', 'bithyear', 'password', 'isactive', 'dt', ),
-        self::TYPE_COLNAME       => array(PhpauthUsersTableMap::COL_ID, PhpauthUsersTableMap::COL_EMAIL, PhpauthUsersTableMap::COL_NOME, PhpauthUsersTableMap::COL_COGNOME, PhpauthUsersTableMap::COL_PHONE, PhpauthUsersTableMap::COL_LEVEL, PhpauthUsersTableMap::COL_BITHYEAR, PhpauthUsersTableMap::COL_PASSWORD, PhpauthUsersTableMap::COL_ISACTIVE, PhpauthUsersTableMap::COL_DT, ),
-        self::TYPE_FIELDNAME     => array('id', 'email', 'Nome', 'Cognome', 'Phone', 'Level', 'Bithyear', 'password', 'isactive', 'dt', ),
+        self::TYPE_PHPNAME       => array('Id', 'Email', 'Name', 'Surname', 'Phone', 'Level', 'Birthyear', 'Password', 'Isactive', 'Dt', ),
+        self::TYPE_CAMELNAME     => array('id', 'email', 'name', 'surname', 'phone', 'level', 'birthyear', 'password', 'isactive', 'dt', ),
+        self::TYPE_COLNAME       => array(PhpauthUsersTableMap::COL_ID, PhpauthUsersTableMap::COL_EMAIL, PhpauthUsersTableMap::COL_NAME, PhpauthUsersTableMap::COL_SURNAME, PhpauthUsersTableMap::COL_PHONE, PhpauthUsersTableMap::COL_LEVEL, PhpauthUsersTableMap::COL_BIRTHYEAR, PhpauthUsersTableMap::COL_PASSWORD, PhpauthUsersTableMap::COL_ISACTIVE, PhpauthUsersTableMap::COL_DT, ),
+        self::TYPE_FIELDNAME     => array('id', 'email', 'name', 'surname', 'phone', 'level', 'birthyear', 'password', 'isactive', 'dt', ),
         self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, )
     );
 
@@ -146,10 +146,10 @@ class PhpauthUsersTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('Id' => 0, 'Email' => 1, 'Nome' => 2, 'Cognome' => 3, 'Phone' => 4, 'Level' => 5, 'Bithyear' => 6, 'Password' => 7, 'Isactive' => 8, 'Dt' => 9, ),
-        self::TYPE_CAMELNAME     => array('id' => 0, 'email' => 1, 'nome' => 2, 'cognome' => 3, 'phone' => 4, 'level' => 5, 'bithyear' => 6, 'password' => 7, 'isactive' => 8, 'dt' => 9, ),
-        self::TYPE_COLNAME       => array(PhpauthUsersTableMap::COL_ID => 0, PhpauthUsersTableMap::COL_EMAIL => 1, PhpauthUsersTableMap::COL_NOME => 2, PhpauthUsersTableMap::COL_COGNOME => 3, PhpauthUsersTableMap::COL_PHONE => 4, PhpauthUsersTableMap::COL_LEVEL => 5, PhpauthUsersTableMap::COL_BITHYEAR => 6, PhpauthUsersTableMap::COL_PASSWORD => 7, PhpauthUsersTableMap::COL_ISACTIVE => 8, PhpauthUsersTableMap::COL_DT => 9, ),
-        self::TYPE_FIELDNAME     => array('id' => 0, 'email' => 1, 'Nome' => 2, 'Cognome' => 3, 'Phone' => 4, 'Level' => 5, 'Bithyear' => 6, 'password' => 7, 'isactive' => 8, 'dt' => 9, ),
+        self::TYPE_PHPNAME       => array('Id' => 0, 'Email' => 1, 'Name' => 2, 'Surname' => 3, 'Phone' => 4, 'Level' => 5, 'Birthyear' => 6, 'Password' => 7, 'Isactive' => 8, 'Dt' => 9, ),
+        self::TYPE_CAMELNAME     => array('id' => 0, 'email' => 1, 'name' => 2, 'surname' => 3, 'phone' => 4, 'level' => 5, 'birthyear' => 6, 'password' => 7, 'isactive' => 8, 'dt' => 9, ),
+        self::TYPE_COLNAME       => array(PhpauthUsersTableMap::COL_ID => 0, PhpauthUsersTableMap::COL_EMAIL => 1, PhpauthUsersTableMap::COL_NAME => 2, PhpauthUsersTableMap::COL_SURNAME => 3, PhpauthUsersTableMap::COL_PHONE => 4, PhpauthUsersTableMap::COL_LEVEL => 5, PhpauthUsersTableMap::COL_BIRTHYEAR => 6, PhpauthUsersTableMap::COL_PASSWORD => 7, PhpauthUsersTableMap::COL_ISACTIVE => 8, PhpauthUsersTableMap::COL_DT => 9, ),
+        self::TYPE_FIELDNAME     => array('id' => 0, 'email' => 1, 'name' => 2, 'surname' => 3, 'phone' => 4, 'level' => 5, 'birthyear' => 6, 'password' => 7, 'isactive' => 8, 'dt' => 9, ),
         self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, )
     );
 
@@ -176,46 +176,46 @@ class PhpauthUsersTableMap extends TableMap
         'COL_EMAIL' => 'EMAIL',
         'email' => 'EMAIL',
         'phpauth_users.email' => 'EMAIL',
-        'Nome' => 'NOME',
-        'PhpauthUsers.Nome' => 'NOME',
-        'nome' => 'NOME',
-        'phpauthUsers.nome' => 'NOME',
-        'PhpauthUsersTableMap::COL_NOME' => 'NOME',
-        'COL_NOME' => 'NOME',
-        'Nome' => 'NOME',
-        'phpauth_users.Nome' => 'NOME',
-        'Cognome' => 'COGNOME',
-        'PhpauthUsers.Cognome' => 'COGNOME',
-        'cognome' => 'COGNOME',
-        'phpauthUsers.cognome' => 'COGNOME',
-        'PhpauthUsersTableMap::COL_COGNOME' => 'COGNOME',
-        'COL_COGNOME' => 'COGNOME',
-        'Cognome' => 'COGNOME',
-        'phpauth_users.Cognome' => 'COGNOME',
+        'Name' => 'NAME',
+        'PhpauthUsers.Name' => 'NAME',
+        'name' => 'NAME',
+        'phpauthUsers.name' => 'NAME',
+        'PhpauthUsersTableMap::COL_NAME' => 'NAME',
+        'COL_NAME' => 'NAME',
+        'name' => 'NAME',
+        'phpauth_users.name' => 'NAME',
+        'Surname' => 'SURNAME',
+        'PhpauthUsers.Surname' => 'SURNAME',
+        'surname' => 'SURNAME',
+        'phpauthUsers.surname' => 'SURNAME',
+        'PhpauthUsersTableMap::COL_SURNAME' => 'SURNAME',
+        'COL_SURNAME' => 'SURNAME',
+        'surname' => 'SURNAME',
+        'phpauth_users.surname' => 'SURNAME',
         'Phone' => 'PHONE',
         'PhpauthUsers.Phone' => 'PHONE',
         'phone' => 'PHONE',
         'phpauthUsers.phone' => 'PHONE',
         'PhpauthUsersTableMap::COL_PHONE' => 'PHONE',
         'COL_PHONE' => 'PHONE',
-        'Phone' => 'PHONE',
-        'phpauth_users.Phone' => 'PHONE',
+        'phone' => 'PHONE',
+        'phpauth_users.phone' => 'PHONE',
         'Level' => 'LEVEL',
         'PhpauthUsers.Level' => 'LEVEL',
         'level' => 'LEVEL',
         'phpauthUsers.level' => 'LEVEL',
         'PhpauthUsersTableMap::COL_LEVEL' => 'LEVEL',
         'COL_LEVEL' => 'LEVEL',
-        'Level' => 'LEVEL',
-        'phpauth_users.Level' => 'LEVEL',
-        'Bithyear' => 'BITHYEAR',
-        'PhpauthUsers.Bithyear' => 'BITHYEAR',
-        'bithyear' => 'BITHYEAR',
-        'phpauthUsers.bithyear' => 'BITHYEAR',
-        'PhpauthUsersTableMap::COL_BITHYEAR' => 'BITHYEAR',
-        'COL_BITHYEAR' => 'BITHYEAR',
-        'Bithyear' => 'BITHYEAR',
-        'phpauth_users.Bithyear' => 'BITHYEAR',
+        'level' => 'LEVEL',
+        'phpauth_users.level' => 'LEVEL',
+        'Birthyear' => 'BIRTHYEAR',
+        'PhpauthUsers.Birthyear' => 'BIRTHYEAR',
+        'birthyear' => 'BIRTHYEAR',
+        'phpauthUsers.birthyear' => 'BIRTHYEAR',
+        'PhpauthUsersTableMap::COL_BIRTHYEAR' => 'BIRTHYEAR',
+        'COL_BIRTHYEAR' => 'BIRTHYEAR',
+        'birthyear' => 'BIRTHYEAR',
+        'phpauth_users.birthyear' => 'BIRTHYEAR',
         'Password' => 'PASSWORD',
         'PhpauthUsers.Password' => 'PASSWORD',
         'password' => 'PASSWORD',
@@ -261,11 +261,11 @@ class PhpauthUsersTableMap extends TableMap
         // columns
         $this->addPrimaryKey('id', 'Id', 'INTEGER', true, null, null);
         $this->addColumn('email', 'Email', 'VARCHAR', false, 100, null);
-        $this->addColumn('Nome', 'Nome', 'VARCHAR', true, 60, null);
-        $this->addColumn('Cognome', 'Cognome', 'VARCHAR', true, 60, null);
-        $this->addColumn('Phone', 'Phone', 'VARCHAR', true, 60, null);
-        $this->addColumn('Level', 'Level', 'INTEGER', true, null, 3);
-        $this->addColumn('Bithyear', 'Bithyear', 'INTEGER', true, null, null);
+        $this->addColumn('name', 'Name', 'VARCHAR', true, 60, null);
+        $this->addColumn('surname', 'Surname', 'VARCHAR', true, 60, null);
+        $this->addColumn('phone', 'Phone', 'VARCHAR', true, 60, null);
+        $this->addColumn('level', 'Level', 'INTEGER', true, null, 3);
+        $this->addColumn('birthyear', 'Birthyear', 'INTEGER', true, null, null);
         $this->addColumn('password', 'Password', 'VARCHAR', false, 255, null);
         $this->addColumn('isactive', 'Isactive', 'BOOLEAN', true, 1, false);
         $this->addColumn('dt', 'Dt', 'TIMESTAMP', true, null, 'CURRENT_TIMESTAMP');
@@ -421,22 +421,22 @@ class PhpauthUsersTableMap extends TableMap
         if (null === $alias) {
             $criteria->addSelectColumn(PhpauthUsersTableMap::COL_ID);
             $criteria->addSelectColumn(PhpauthUsersTableMap::COL_EMAIL);
-            $criteria->addSelectColumn(PhpauthUsersTableMap::COL_NOME);
-            $criteria->addSelectColumn(PhpauthUsersTableMap::COL_COGNOME);
+            $criteria->addSelectColumn(PhpauthUsersTableMap::COL_NAME);
+            $criteria->addSelectColumn(PhpauthUsersTableMap::COL_SURNAME);
             $criteria->addSelectColumn(PhpauthUsersTableMap::COL_PHONE);
             $criteria->addSelectColumn(PhpauthUsersTableMap::COL_LEVEL);
-            $criteria->addSelectColumn(PhpauthUsersTableMap::COL_BITHYEAR);
+            $criteria->addSelectColumn(PhpauthUsersTableMap::COL_BIRTHYEAR);
             $criteria->addSelectColumn(PhpauthUsersTableMap::COL_PASSWORD);
             $criteria->addSelectColumn(PhpauthUsersTableMap::COL_ISACTIVE);
             $criteria->addSelectColumn(PhpauthUsersTableMap::COL_DT);
         } else {
             $criteria->addSelectColumn($alias . '.id');
             $criteria->addSelectColumn($alias . '.email');
-            $criteria->addSelectColumn($alias . '.Nome');
-            $criteria->addSelectColumn($alias . '.Cognome');
-            $criteria->addSelectColumn($alias . '.Phone');
-            $criteria->addSelectColumn($alias . '.Level');
-            $criteria->addSelectColumn($alias . '.Bithyear');
+            $criteria->addSelectColumn($alias . '.name');
+            $criteria->addSelectColumn($alias . '.surname');
+            $criteria->addSelectColumn($alias . '.phone');
+            $criteria->addSelectColumn($alias . '.level');
+            $criteria->addSelectColumn($alias . '.birthyear');
             $criteria->addSelectColumn($alias . '.password');
             $criteria->addSelectColumn($alias . '.isactive');
             $criteria->addSelectColumn($alias . '.dt');
@@ -459,22 +459,22 @@ class PhpauthUsersTableMap extends TableMap
         if (null === $alias) {
             $criteria->removeSelectColumn(PhpauthUsersTableMap::COL_ID);
             $criteria->removeSelectColumn(PhpauthUsersTableMap::COL_EMAIL);
-            $criteria->removeSelectColumn(PhpauthUsersTableMap::COL_NOME);
-            $criteria->removeSelectColumn(PhpauthUsersTableMap::COL_COGNOME);
+            $criteria->removeSelectColumn(PhpauthUsersTableMap::COL_NAME);
+            $criteria->removeSelectColumn(PhpauthUsersTableMap::COL_SURNAME);
             $criteria->removeSelectColumn(PhpauthUsersTableMap::COL_PHONE);
             $criteria->removeSelectColumn(PhpauthUsersTableMap::COL_LEVEL);
-            $criteria->removeSelectColumn(PhpauthUsersTableMap::COL_BITHYEAR);
+            $criteria->removeSelectColumn(PhpauthUsersTableMap::COL_BIRTHYEAR);
             $criteria->removeSelectColumn(PhpauthUsersTableMap::COL_PASSWORD);
             $criteria->removeSelectColumn(PhpauthUsersTableMap::COL_ISACTIVE);
             $criteria->removeSelectColumn(PhpauthUsersTableMap::COL_DT);
         } else {
             $criteria->removeSelectColumn($alias . '.id');
             $criteria->removeSelectColumn($alias . '.email');
-            $criteria->removeSelectColumn($alias . '.Nome');
-            $criteria->removeSelectColumn($alias . '.Cognome');
-            $criteria->removeSelectColumn($alias . '.Phone');
-            $criteria->removeSelectColumn($alias . '.Level');
-            $criteria->removeSelectColumn($alias . '.Bithyear');
+            $criteria->removeSelectColumn($alias . '.name');
+            $criteria->removeSelectColumn($alias . '.surname');
+            $criteria->removeSelectColumn($alias . '.phone');
+            $criteria->removeSelectColumn($alias . '.level');
+            $criteria->removeSelectColumn($alias . '.birthyear');
             $criteria->removeSelectColumn($alias . '.password');
             $criteria->removeSelectColumn($alias . '.isactive');
             $criteria->removeSelectColumn($alias . '.dt');

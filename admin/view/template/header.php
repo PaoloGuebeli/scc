@@ -7,7 +7,7 @@
     <script src="<?php echo URL ?>view/js/jquery.min.js" type="text/javascript"></script>
     <script src="<?php echo URL ?>view/js/main.js" type="text/javascript"></script>
 </head>
-<body>
+<body onload="getData()">
 <nav class="main-menu">
     <ul>
         <li class="<?php if($page == "home"){ echo "active";} ?>">

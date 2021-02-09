@@ -121,9 +121,11 @@
         <img src="<?php echo URL ?>resources/img/scc_logo.png" width="150px" height="150px">
         <form class="login-form" action="<?php echo URL ?>Login/authenticate" method="post">
             <input type="text" placeholder="Email" name="email" id="email"/>
-            <input type="password" placeholder="Password" name="pass"/>
-            <input type="submit" class="button" value="ACCEDI">
+            <input type="password" placeholder="Password" name="pass" id="pass"/>
+            <input type="text" placeholder="Codice" name="code" style="display: none" id="code"/>
+            <input type="submit" class="button" value="ACCEDI" id="submit">
             <p class="message"><a href="#" onclick="resetPassword()">Dimenticato la password?</a></p>
+            <p class="message"><a href="#" onclick="activateAccount()">Attiva Account</a></p>
             <p class="message" id="error"><?php if (isset($return)) echo $return['message'] ?></p>
         </form>
     </div>
@@ -147,7 +149,11 @@
             if (response !== "null") {
                 var message = JSON.parse(response);
                 if(message[0]) {
-                    alert("È stata inviata un'email all'indirizzo email inserito.")
+                    $('#email').attr('type','password').attr('placeholder','Nuova Password').val('');
+                    $('#pass').attr('placeholder','Ripeti Password');
+                    $('#code').show();
+                    $('#submit').attr('type','button').attr('onclick','setPassword()');
+                    alert("È stata inviata un'email all'indirizzo email inserito.");
                 }else{
                     $('#error').html(message);
                 }
@@ -164,6 +170,80 @@
         });
 
 
+    }
+
+    function activateAccount() {
+
+        var email = $('#email').val();
+
+        var request = $.ajax({
+            url: "<?php echo URL ?>Login/activate",
+            type: "post",
+            data: {'email': email}
+        });
+
+        // Callback handler that will be called on success
+        request.done(function (response, textStatus, jqXHR) {
+            if (response !== "null") {
+                var message = JSON.parse(response);
+                if(message[0]) {
+                    $('#email').attr('type','password').attr('placeholder','Nuova Password').val('');
+                    $('#pass').attr('placeholder','Ripeti Password');
+                    $('#code').show();
+                    $('#submit').attr('type','button').attr('onclick','setPassword()');
+                    alert("È stata inviata un'email all'indirizzo email inserito.");
+                }else{
+                    $('#error').html(message);
+                }
+            }
+        });
+
+        // Callback handler that will be called on failure
+        request.fail(function (jqXHR, textStatus, errorThrown) {
+            // Log the error to the console
+            console.error(
+                "The following error occurred: " +
+                textStatus, errorThrown
+            );
+        });
+    }
+
+    function setPassword() {
+
+        var pass = $('#email').val();
+        var rpass = $('#pass').val();
+        var code = $('#code').val();
+
+        var request = $.ajax({
+            url: "<?php echo URL ?>Login/setNewPassword",
+            type: "post",
+            data: {'code':code, 'pass':pass, 'rpass':rpass}
+        });
+
+        // Callback handler that will be called on success
+        request.done(function (response, textStatus, jqXHR) {
+            if (response !== "null") {
+                var message = JSON.parse(response);
+                if(message[0]) {
+                    $('#email').attr('type','text').attr('placeholder','E-mail').val('');
+                    $('#pass').attr('placeholder','Password');
+                    $('#code').hide();
+                    $('#submit').attr('type','submit').attr('onclick','');
+                    alert("La password è stata impostata con successo.")
+                }else{
+                    $('#error').html(message);
+                }
+            }
+        });
+
+        // Callback handler that will be called on failure
+        request.fail(function (jqXHR, textStatus, errorThrown) {
+            // Log the error to the console
+            console.error(
+                "The following error occurred: " +
+                textStatus, errorThrown
+            );
+        });
     }
 </script>
 

@@ -116,11 +116,11 @@
   <table name="phpauth_users" idMethod="native" phpName="PhpauthUsers" namespace="scc">
     <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="email" phpName="Email" type="VARCHAR" size="100"/>
-    <column name="Nome" phpName="Nome" type="VARCHAR" size="60" required="true"/>
-    <column name="Cognome" phpName="Cognome" type="VARCHAR" size="60" required="true"/>
-    <column name="Phone" phpName="Phone" type="VARCHAR" size="60" required="true"/>
-    <column name="Level" phpName="Level" type="INTEGER" required="true" defaultValue="3"/>
-    <column name="Bithyear" phpName="Bithyear" type="INTEGER" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="60" required="true"/>
+    <column name="surname" phpName="Surname" type="VARCHAR" size="60" required="true"/>
+    <column name="phone" phpName="Phone" type="VARCHAR" size="60" required="true"/>
+    <column name="level" phpName="Level" type="INTEGER" required="true" defaultValue="3"/>
+    <column name="birthyear" phpName="Birthyear" type="INTEGER" required="true"/>
     <column name="password" phpName="Password" type="VARCHAR" size="255"/>
     <column name="isactive" phpName="Isactive" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
     <column name="dt" phpName="Dt" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>

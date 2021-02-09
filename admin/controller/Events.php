@@ -10,7 +10,7 @@ class Events
     private $dbh;
     private $config;
     private $auth;
-    private $uq;
+    private $eq;
 
     /**
      * Costruttore Login.
@@ -24,15 +24,23 @@ class Events
          * Istanza del database per permettere a phpAuth di connettersi.
          */
         $this->dbh = DbManager::getDb();
-        $this->config = new PHPAuth\Config($this->dbh, null, null, "it_IT");
+        $this->config = new PHPAuth\Config($this->dbh, '', '', "it_IT");
         $this->auth = new PHPAuth\Auth($this->dbh, $this->config);
-        //$this->uq = new \scc\scc\PhpauthUsersQuery();
+        $this->eq = new \scc\scc\EventoQuery();
     }
 
     function index(){
         $page = 'events';
         require 'view/template/header.php';
         require 'view/events.php';
+
+    }
+
+    function getEventi()
+    {
+
+        $eq = $this->eq->find();
+        echo json_encode($eq->toArray());
 
     }
 }
